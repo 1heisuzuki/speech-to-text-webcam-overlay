@@ -99,21 +99,8 @@ a:link, a:visited, a:hover, a:active {
     color: #CC3333;
 }
 
-.invisible {
-	display: none;
-}
-
-.help_overlay_visible {
-	box-sizing: border-box;
-	display: inline;
-	background: rgba(60, 60, 60, 0.85);
-	max-width: 80vw;
-	position: absolute;
-	top: 50px;
-	left: 50px;
-	padding: 2rem;
-	font-size: 18px;
-	text-align: center;
+.help_strong {
+	color: #ff0000;
 }
 
 .control_wrapper {

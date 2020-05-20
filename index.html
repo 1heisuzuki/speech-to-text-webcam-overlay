@@ -39,12 +39,8 @@
         <div class="source">
             Source: <a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay" target="_blank">GitHub</a><br/>
             音声認識は <a href="https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API" target="_blank">Web Speech API</a> を利用し，日本語の音声を認識する設定になっています。<br/><br/>
-            カメラやマイクが機能しないときは: <a href="https://support.google.com/chrome/answer/2693767?co=GENIE.Platform%3DDesktop&hl=ja&oco=1" target="_blank">カメラとマイクを使用する - パソコン - Google Chrome ヘルプ</a>
+            <span id="help" class="">カメラやマイクが機能しないときはページを再読み込みするか，ブラウザの設定を確認してください: <a href="https://support.google.com/chrome/answer/2693767?co=GENIE.Platform%3DDesktop&hl=ja&oco=1" target="_blank">Google Chrome ヘルプページ</a></span>
         </div>
-    </div>
-    <div id="help" class="invisible">
-        カメラやマイクが機能しないときはページを再読み込みするか，ブラウザの設定を確認してください: <br/>
-        <a href="https://support.google.com/chrome/answer/2693767?co=GENIE.Platform%3DDesktop&hl=ja&oco=1" target="_blank">カメラとマイクを使用する - パソコン - Google Chrome ヘルプ
     </div>
 </body>
 
@@ -92,7 +88,7 @@
         .then(stream => $video.srcObject = stream)
         .catch(err => {
             alert(`カメラ映像を読み込めませんでした。ブラウザのアクセス制限など，設定を確認してください`);
-            document.getElementById('help').className = "help_overlay_visible";
+            document.getElementById('help').classList.toggle('help_strong');
         });
     
     
