@@ -1,0 +1,91 @@
+html,
+body {
+	background-color: #000;
+	font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+	color: #fff;
+}
+
+.main {
+	margin: 1.5rem;
+}
+
+.source {
+	color: #555;
+}
+
+a:link, a:visited, a:hover, a:active {
+	color: #999;
+}
+
+.wrapper {
+	position: relative;
+	width: 960px;
+	height: 540px;
+	margin-bottom: 1rem;
+}
+
+.video_area {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top:0;
+	left:0;
+}
+
+.text_overlay {
+    box-sizing: border-box;
+	position: absolute;
+	width: 80%;
+	height: 80%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	overflow: hidden;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+.text_area{
+	box-sizing: border-box;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	font-size: 68px;
+	font-weight: 500;
+	letter-spacing: 0.2rem;
+	line-height: 165%;
+	color: #fff;
+	text-shadow:0 0 5px #000;
+	text-align: justify;
+	opacity: 0.9;
+}
+
+#status {
+    box-sizing: border-box;
+	background-color: #000e16;
+	display: inline-block;
+    width: 20ex;
+	padding: 8px 10px;
+	margin-bottom: 1rem;
+	font-size: 14px;
+	letter-spacing: 0.02rem;
+    line-height: 100%;
+	text-align: center;
+}
+
+.processing {
+    border: 1px #FF8800 solid;
+    color: #FF8800;
+}
+
+.ready {
+    border: 1px #555555 solid;
+    color: #555555;
+}
+
+.error {
+    border: 1px #CC3333 solid;
+    color: #CC3333;
+}
+
