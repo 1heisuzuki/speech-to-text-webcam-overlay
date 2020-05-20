@@ -65,7 +65,7 @@ a:link, a:visited, a:hover, a:active {
     box-sizing: border-box;
 	background-color: #000e16;
 	display: inline-block;
-    width: 20ex;
+    min-width: 20ex;
 	padding: 8px 10px;
 	margin-bottom: 1rem;
 	font-size: 14px;
