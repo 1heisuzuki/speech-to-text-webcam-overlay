@@ -33,7 +33,11 @@
             <span id="value_line_height" class="value">165</span>%，
             字間 <input type="range" value="0.2" min="0" max="2" step="0.01"
                 oninput="document.getElementById('result_text').style.letterSpacing=this.value+'rem',document.getElementById('value_letter_spacing').innerHTML=this.value">
-            <span id="value_letter_spacing" class="value">0.2</span>
+            <span id="value_letter_spacing" class="value">0.2</span>，
+            色 <input type="color" value="#ffffff"
+                oninput="document.getElementById('result_text').style.color=this.value,document.getElementById('value_font_color').innerHTML=this.value">
+            <span id="value_font_color" class="value">#ffffff</span>
+
             <br />
             <input type="button" value="カメラ表示/非表示"
                 onclick="document.getElementById('result_video').classList.toggle('hidden'),document.getElementById('bg_green_toggle').classList.toggle('hidden')">
