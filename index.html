@@ -23,6 +23,10 @@
             カメラやマイクが機能しないときは: <a href="https://support.google.com/chrome/answer/2693767?co=GENIE.Platform%3DDesktop&hl=ja&oco=1" target="_blank">カメラとマイクを使用する - パソコン - Google Chrome ヘルプ</a>
         </div>
     </div>
+    <div id="help" class="invisible">
+        カメラやマイクが機能しないときはページを再読み込みするか，ブラウザの設定を確認してください: <br/>
+        <a href="https://support.google.com/chrome/answer/2693767?co=GENIE.Platform%3DDesktop&hl=ja&oco=1" target="_blank">カメラとマイクを使用する - パソコン - Google Chrome ヘルプ
+    </div>
 </body>
 
 <script>
@@ -65,7 +69,10 @@
 
     navigator.mediaDevices.getUserMedia({ video: {aspectRatio: {exact: 1.7777777778}}, audio: false })
         .then(stream => $video.srcObject = stream)
-        .catch(err => alert(`カメラ映像を読み込めませんでした。ブラウザのアクセス制限など，設定を確認してください`));
+        .catch(err => {
+            alert(`カメラ映像を読み込めませんでした。ブラウザのアクセス制限など，設定を確認してください`);
+            document.getElementById('help').className = "help_overlay_visible";
+        });
     
     
     // 音声認識
