@@ -12,7 +12,7 @@
 <body>
     <div class="main">
         <div id="status" class="error"></div>
-        <div class="wrapper">
+        <div id="video_wrapper" class="video_wrapper">
             <video id="result_video" class="video_area" autoplay></video>
             <div class="text_overlay">
                 <div id="result_text" class="text_area">音声認識が始まるとここに文字が表示されます。マイクとカメラを有効にしてください。</div>
@@ -31,6 +31,10 @@
             字間 <input type="range" value="0.2" min="0" max="2" step="0.01" 
                     oninput="document.getElementById('result_text').style.letterSpacing=this.value+'rem',document.getElementById('value_letter_spacing').innerHTML=this.value">
                 <span id="value_letter_spacing" class="value">0.2</span>
+            <br/>
+            <input type="button" value="カメラ表示/非表示" 
+                onclick="document.getElementById('result_video').classList.toggle('hidden'),document.getElementById('bg_green_toggle').classList.toggle('hidden')">
+            <input type="button" id="bg_green_toggle" class="hidden" value="グリーンバック表示/非表示" onclick="document.getElementById('video_wrapper').classList.toggle('bg_green')">
         </div>
         <div class="source">
             Source: <a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay" target="_blank">GitHub</a><br/>

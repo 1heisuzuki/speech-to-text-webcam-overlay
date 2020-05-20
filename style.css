@@ -17,11 +17,12 @@ a:link, a:visited, a:hover, a:active {
 	color: #999;
 }
 
-.wrapper {
+.video_wrapper {
 	position: relative;
 	width: 960px;
 	height: 540px;
 	margin-bottom: 1rem;
+	transition: all 0.3s;
 }
 
 .video_area {
@@ -30,6 +31,15 @@ a:link, a:visited, a:hover, a:active {
 	height: 100%;
 	top:0;
 	left:0;
+	transition: all 0.3s;
+}
+
+.hidden {
+	opacity: 0;
+}
+
+.bg_green {
+	background-color: #00FF00;
 }
 
 .text_overlay {
@@ -108,6 +118,7 @@ a:link, a:visited, a:hover, a:active {
 
 .control_wrapper {
 	font-size: 16px;
+	line-height: 200%;
 	margin-top: 2rem;
 	margin-bottom: 3rem;
 	opacity: 0.6;
