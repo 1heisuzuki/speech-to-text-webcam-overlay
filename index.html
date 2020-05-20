@@ -65,7 +65,7 @@
 
     navigator.mediaDevices.getUserMedia({ video: {aspectRatio: {exact: 1.7777777778}}, audio: false })
         .then(stream => $video.srcObject = stream)
-        .catch(err => alert(`${err.name} ${err.message}`));
+        .catch(err => alert(`カメラ映像を読み込めませんでした。ブラウザのアクセス制限など，設定を確認してください`));
     
     
     // 音声認識
