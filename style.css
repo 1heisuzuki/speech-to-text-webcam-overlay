@@ -106,3 +106,10 @@ a:link, a:visited, a:hover, a:active {
 	text-align: center;
 }
 
+.control_wrapper {
+	font-size: 16px;
+	margin-top: 2rem;
+	margin-bottom: 3rem;
+	opacity: 0.6;
+}
+

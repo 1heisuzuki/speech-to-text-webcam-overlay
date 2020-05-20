@@ -15,12 +15,26 @@
         <div class="wrapper">
             <video id="result_video" class="video_area" autoplay></video>
             <div class="text_overlay">
-                <div id="result_text" class="text_area">音声認識が始まるとここに文字が表示されます。マイクとカメラを有効にしてください。</div>
+                <div id="result_text">音声認識が始まるとここに文字が表示されます。マイクとカメラを有効にしてください。</div>
             </div>
+        </div>
+        <div class="control_wrapper">
+            透明度 <input type="range" value="0.9" min="0" max="1" step="0.05" 
+                oninput="document.getElementById('result_text').style.opacity=this.value,document.getElementById('value_opacity').innerHTML=this.value">
+                <span id="value_opacity" class="value">0.9</span>，
+            大きさ <input type="range" value="68" min="1" max="150" step="1" 
+                oninput="document.getElementById('result_text').style.fontSize=this.value+'px',document.getElementById('value_font_size').innerHTML=this.value">
+                <span id="value_font_size" class="value">68</span>px，
+            行間 <input type="range" value="165" min="100" max="300" step="1" 
+                oninput="document.getElementById('result_text').style.lineHeight=this.value+'%',document.getElementById('value_line_height').innerHTML=this.value">
+                <span id="value_line_height" class="value">165</span>%，
+            字間 <input type="range" value="0.2" min="0" max="2" step="0.01" 
+                oninput="document.getElementById('result_text').style.letterSpacing=this.value+'rem',document.getElementById('value_letter_spacing').innerHTML=this.value">
+                <span id="value_letter_spacing" class="value">0.2</span>
         </div>
         <div class="source">
             Source: <a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay" target="_blank">GitHub</a><br/>
-            音声認識は <a href="https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API" target="_blank">Web Speech API</a> を使用しています<br/><br/>
+            音声認識は <a href="https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API" target="_blank">Web Speech API</a> を使用しています。日本語の音声を認識する設定になっています。<br/><br/>
             カメラやマイクが機能しないときは: <a href="https://support.google.com/chrome/answer/2693767?co=GENIE.Platform%3DDesktop&hl=ja&oco=1" target="_blank">カメラとマイクを使用する - パソコン - Google Chrome ヘルプ</a>
         </div>
     </div>
