@@ -110,4 +110,15 @@ a:link, a:visited, a:hover, a:active {
 	margin-bottom: 1rem;
 	opacity: 0.6;
 }
-
+#FullScreenBtn{
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	opacity: 0.6;
+}
+#video_wrapper:-webkit-full-screen #FullScreenBtn{
+	opacity: 0.2;
+}
+#video_wrapper:-webkit-full-screen #FullScreenBtn:hover{
+	opacity: 0.6;
+}
