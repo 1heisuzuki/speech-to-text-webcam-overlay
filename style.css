@@ -10,11 +10,11 @@ body {
 }
 
 .source {
-	color: #555;
+	color: #666;
 }
 
 a:link, a:visited, a:hover, a:active {
-	color: #999;
+	color: #777;
 }
 
 .video_wrapper {
@@ -106,8 +106,8 @@ a:link, a:visited, a:hover, a:active {
 .control_wrapper {
 	font-size: 16px;
 	line-height: 200%;
-	margin-top: 2rem;
-	margin-bottom: 3rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 	opacity: 0.6;
 }
 
