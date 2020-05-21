@@ -55,11 +55,10 @@ a:link, a:visited, a:hover, a:active {
 	position: absolute;
 	width: 80%;
 	height: 80%;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: auto;
+	top: 10%;
+	left: 10%;
+	right: 10%;
+	bottom: 10%;
 	overflow: hidden;
 }
 
@@ -79,6 +78,7 @@ a:link, a:visited, a:hover, a:active {
 	-webkit-text-stroke-color: #000;
 	text-align: justify;
 	opacity: 0.9;
+	background-color: rgba(0,0,0,0);
 }
 
 #status {
@@ -124,7 +124,7 @@ a:link, a:visited, a:hover, a:active {
 .control_form {
 	width: 400px;
 	display: grid;
-	grid-template-columns: 50px 200px 1fr;
+	grid-template-columns: 50px 250px 1fr;
 	grid-gap: 0rem 1rem;
 }
 
