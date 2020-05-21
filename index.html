@@ -7,7 +7,7 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <title>Speech to Text Webcam Overlay</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?ver=202005212300" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="style.css?ver=202005212359" type="text/css" media="screen" charset="utf-8" />
 </head>
 
 <body>
@@ -51,6 +51,13 @@
                     oninput="document.getElementById('result_text').style.letterSpacing=this.value+'rem',document.getElementById('value_letter_spacing').innerHTML=this.value">
                 <div class="control_value">
                     <span id="value_letter_spacing">0.2</span>
+                </div>
+
+                <label for="slider_text_stroke" class="control_label">縁取り</label>
+                <input id="slider_text_stroke" type="range" class="control_input" value="0.3" min="0" max="5" step="0.01"
+                    oninput="document.getElementById('result_text').style.webkitTextStrokeWidth=this.value+'px',document.getElementById('value_text_stroke').innerHTML=this.value">
+                <div class="control_value">
+                    <span id="value_text_stroke">0.3</span>px
                 </div>
 
                 <label for="selector_font_color" class="control_label">色</label>

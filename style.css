@@ -75,6 +75,8 @@ a:link, a:visited, a:hover, a:active {
 	line-height: 165%;
 	color: #fff;
 	text-shadow:0 0 5px #000;
+	-webkit-text-stroke-width: 0.3px;
+	-webkit-text-stroke-color: #000;
 	text-align: justify;
 	opacity: 0.9;
 }
