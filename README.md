@@ -23,13 +23,13 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 
 ## 機能について
 ### 相手側の音声を表示したい
-- マイクに相手側の声が物理的に入るようにする（ハウリング注意），PC内部で直接相手の音をブラウザに流し込むなどの方法があります。  
-参考: https://www.cg-method.com/entry/google-document-convert-voice-to-text/
+- マイクに相手側の声が物理的に入るようにする（ハウリング注意），PC内部で直接相手の音をブラウザに流し込むなどの方法があります。    
+参考: https://www.cg-method.com/entry/google-document-convert-voice-to-text/  
 参考: https://ghosthack.net/?p=5680
 
 ### 文字の修正をしたい
 - 認識結果のログでは修正可能になっています。合成画面上での編集については未実装です。
-- Google Docsなどの音声入力やUDトークなど，他のツールの利用で要望を満たせるかもしれません。
+- Google Docsなどの音声入力やUDトークなど，他のツールの利用で要望を満たせるかもしれません。  
 参考: Google Docs ヘルプ / 音声で入力する https://support.google.com/docs/answer/4492226?hl=ja
 
 ### 文字認識の結果を保存したい
@@ -45,7 +45,7 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 
 ### 他の言語を認識したい
 - 現状実装されていません（日本語固定設定）。
-- Googleが公開しているWeb Speech APIのサンプルページでは言語を切り替えて利用できません
+- Googleが公開しているWeb Speech APIのサンプルページでは言語を切り替えて利用できません  
 参考: https://www.google.com/intl/en/chrome/demos/speech.html
 
 ## その他
