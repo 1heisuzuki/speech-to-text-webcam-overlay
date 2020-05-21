@@ -24,55 +24,68 @@
 
         </div>
         <div class="control_wrapper">
-            <form class="control_form">
-                <label for="slider_opacity" class="control_label">透明度</label>
-                <input id="slider_opacity"type="range" class="control_input" value="0.9" min="0" max="1" step="0.05"
-                    oninput="document.getElementById('result_text').style.opacity=this.value,document.getElementById('value_opacity').innerHTML=this.value">
-                <div class="control_value">
-                    <span id="value_opacity">0.9</span>
-                </div>
-
+            <div class="control_form">
                 <label for="slider_font_size" class="control_label">大きさ</label>
                 <input id="slider_font_size" type="range" class="control_input" value="68" min="1" max="150" step="1"
                     oninput="document.getElementById('result_text').style.fontSize=this.value+'px',document.getElementById('value_font_size').innerHTML=this.value">
                 <div class="control_value">
                     <span id="value_font_size">68</span>px
                 </div>
+            </div>
 
+            <div class="control_form">
                 <label for="slider_line_height" class="control_label">行間</label>
                 <input id="slider_line_height" type="range" class="control_input" value="165" min="100" max="300" step="1"
                     oninput="document.getElementById('result_text').style.lineHeight=this.value+'%',document.getElementById('value_line_height').innerHTML=this.value">
                 <div class="control_value">
                     <span id="value_line_height">165</span>%
                 </div>
-    
+            </div>
+            
+            <div class="control_form">
                 <label for="slider_letter_spacing" class="control_label">字間</label>
                 <input id="slider_letter_spacing" type="range" class="control_input" value="0.2" min="0" max="2" step="0.01"
                     oninput="document.getElementById('result_text').style.letterSpacing=this.value+'rem',document.getElementById('value_letter_spacing').innerHTML=this.value">
                 <div class="control_value">
                     <span id="value_letter_spacing">0.2</span>
                 </div>
+            </div>
 
+            <div class="control_form">
                 <label for="slider_text_stroke" class="control_label">縁取り</label>
                 <input id="slider_text_stroke" type="range" class="control_input" value="0.3" min="0" max="5" step="0.01"
                     oninput="document.getElementById('result_text').style.webkitTextStrokeWidth=this.value+'px',document.getElementById('value_text_stroke').innerHTML=this.value">
                 <div class="control_value">
                     <span id="value_text_stroke">0.3</span>px
                 </div>
+            </div>
 
+            <div class="control_form">
+                <label for="slider_opacity" class="control_label">透明度</label>
+                <input id="slider_opacity"type="range" class="control_input" value="0.9" min="0" max="1" step="0.05"
+                    oninput="document.getElementById('result_text').style.opacity=this.value,document.getElementById('value_opacity').innerHTML=this.value">
+                <div class="control_value">
+                    <span id="value_opacity">0.9</span>
+                </div>
+            </div>
+
+            <div class="control_form">
                 <label for="selector_font_color" class="control_label">色</label>
                 <input id="selector_font_color" type="color" class="control_input" value="#ffffff"
                     oninput="document.getElementById('result_text').style.color=this.value,document.getElementById('value_font_color').innerHTML=this.value">
                 <div class="control_value">
                     <span id="value_font_color">#ffffff</span>
                 </div>
-            </form>
-            <input type="button" value="カメラ表示/非表示"
-                onclick="document.getElementById('result_video').classList.toggle('hidden')">
-            <input type="button" id="bg_green_toggle" value="グリーンバック表示/非表示"
-                onclick="document.getElementById('bg_green').classList.toggle('hidden')">
-            <input type="button" value="全画面表示アイコン表示/非表示"
-                onclick="document.getElementById('FullScreenBtn').classList.toggle('hidden')">
+            </div>
+
+            <div class="control_button_wrapper">
+                <input type="button" value="カメラ表示/非表示" class="control_button"
+                    onclick="document.getElementById('result_video').classList.toggle('hidden')">
+                <input type="button" id="bg_green_toggle" value="グリーンバック表示/非表示" class="control_button"
+                    onclick="document.getElementById('bg_green').classList.toggle('hidden')">
+                <input type="button" value="全画面表示アイコン表示/非表示" class="control_button"
+                    onclick="document.getElementById('FullScreenBtn').classList.toggle('hidden')">
+            </div>
         </div>
         <div class="help_wrapper">
             <span id="help" class="">カメラやマイクが機能しないときはページを再読み込みするか，ブラウザの設定を確認してください: <a

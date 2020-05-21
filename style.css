@@ -7,6 +7,7 @@ body {
 
 .main {
 	margin: 1.5rem;
+	width: 960px;
 }
 
 .help_wrapper,
@@ -119,18 +120,25 @@ a:link, a:visited, a:hover, a:active {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 	opacity: 0.6;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .control_form {
-	width: 400px;
+	box-sizing: border-box;
 	display: grid;
-	grid-template-columns: 50px 200px 1fr;
-	grid-gap: 0rem 1rem;
+	grid-template-columns: 50px 140px 1fr;
+	grid-gap: 0rem 0.25rem;
+	position: relative;
+    width: 100%;
+    flex: 0 0 25%;
+    max-width: 25%;
 }
 
 .control_label {
 	grid-column: 1 / 2;
 	line-height: 230%;
+	text-align: right;
 }
 	
 .control_input {
@@ -147,6 +155,14 @@ input[type="color"] {
 	height: 100%;
 	background-color: transparent;
 	border: none;
+}
+
+.control_button_wrapper {
+	margin-top: 0.4rem;
+}
+
+.control_button {
+	margin-right: 0.3rem;
 }
 
 #FullScreenBtn{
