@@ -50,7 +50,7 @@
                     target="_blank">Google Chrome ヘルプページ</a></span><br />
             音声認識は <a href="https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API" target="_blank">Web Speech
                 API</a> を利用し，日本語の音声を認識する設定になっています。<br />
-            Source: <a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay" target="_blank">GitHub</a>
+            Source: <a href="https://github.com/syado/speech-to-text-webcam-overlay" target="_blank">GitHub</a>
         </div>
     </div>
 </body>
@@ -155,6 +155,8 @@
         recognition.start();
     }
 
+    
+    // 参考: https://blog.katsubemakito.net/html5/fullscreen
     /**
      * フルスクリーン開始/終了時のイベント設定
      *
@@ -184,6 +186,7 @@
      * @param {object} [element]
      */
     function goFullScreen(element = null) {
+
         const doc = window.document;
         const docEl = (element === null) ? doc.documentElement : element;
         let requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
@@ -229,6 +232,7 @@
                     return (false);
                 }
                 goFullScreen(video_doc);
+                
             }
         });
 
@@ -238,10 +242,19 @@
         eventFullScreen(() => {
             // ボタンを入れ替える
             if (getFullScreenObject()) {
+                // フルスクリーン時に文字と画面の比率を維持
+                const ratio = window.parent.screen.height / document.querySelector("#result_video").clientHeight 
+                document.querySelector('#result_text').style.fontSize =  Number(document.querySelector("#value_font_size").textContent) * ratio  +'px';
+                document.querySelector('#result_text').style.letterSpacing = Number(document.querySelector("#value_letter_spacing").textContent) * ratio +'rem';
                 console.log("フルスクリーン開始");
+                
             }
             else {
+                // フルスクリーン時から通常画面に戻るときに文字と画面の比率を維持
+                document.querySelector('#result_text').style.fontSize = document.querySelector("#value_font_size").textContent+'px';
+                document.querySelector('#result_text').style.letterSpacing = Number(document.querySelector("#value_letter_spacing").textContent)+'rem';
                 console.log("フルスクリーン終了");
+
             }
         });
     };
