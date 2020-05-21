@@ -175,6 +175,7 @@
                 if (results[i].isFinal) {
                     document.getElementById('result_text').innerHTML = results[i][0].transcript;
                     document.getElementById('result_log').insertAdjacentHTML('beforeend', results[i][0].transcript);
+                    document.getElementById('result_log').insertAdjacentHTML('beforeend', '\n');
                     textAreaHeightSet(document.getElementById('result_log'));
                     vr_function();
                     flag_speech = 0;
