@@ -48,13 +48,17 @@
             <input type="button" value="全画面表示アイコン表示/非表示"
                 onclick="document.getElementById('FullScreenBtn').classList.toggle('hidden')">
         </div>
-        <div class="source">
+        <div class="help_wrapper">
             <span id="help" class="">カメラやマイクが機能しないときはページを再読み込みするか，ブラウザの設定を確認してください: <a
                     href="https://support.google.com/chrome/answer/2693767?co=GENIE.Platform%3DDesktop&hl=ja&oco=1"
                     target="_blank">Google Chrome ヘルプページ</a></span><br />
             音声認識は <a href="https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API" target="_blank">Web Speech
                 API</a> を利用し，日本語の音声を認識する設定になっています。<br />
             よくある質問・ソースコード: <a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay" target="_blank">GitHub</a>
+        </div>
+        <div class="log_wrapper">
+            認識結果のログ *認識結果が確定したタイミングで反映されます。<br/>
+            <textarea id="result_log" class="result_log_area" onchange="textAreaHeightSet(this)"></textarea><br/>
         </div>
     </div>
 </body>
@@ -144,6 +148,8 @@
             for (var i = event.resultIndex; i < results.length; i++) {
                 if (results[i].isFinal) {
                     document.getElementById('result_text').innerHTML = results[i][0].transcript;
+                    document.getElementById('result_log').insertAdjacentHTML('beforeend', results[i][0].transcript);
+                    textAreaHeightSet(document.getElementById('result_log'));
                     vr_function();
                     flag_speech = 0;
                 } else {
@@ -157,6 +163,20 @@
         document.getElementById('status').innerHTML = "Ready";
         document.getElementById('status').className = "ready";
         recognition.start();
+    }
+
+    // 認識結果のログのtextareaを自動変形する
+    // 参考: https://webparts.cman.jp/input/textarea/
+    function textAreaHeightSet(argObj){
+        // 一旦テキストエリアを小さくしてスクロールバー（縦の長さを取得）
+        argObj.style.height = "10px";
+        var wSclollHeight = parseInt(argObj.scrollHeight);
+        // 1行の長さを取得する
+        var wLineH = parseInt(argObj.style.lineHeight.replace(/px/, ''));
+        // 最低2行の表示エリアにする
+        if(wSclollHeight < (wLineH * 2)){wSclollHeight=(wLineH * 2);}
+        // テキストエリアの高さを設定する
+        argObj.style.height = wSclollHeight + "px";
     }
 
     

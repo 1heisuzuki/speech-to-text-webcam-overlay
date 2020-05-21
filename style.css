@@ -9,8 +9,10 @@ body {
 	margin: 1.5rem;
 }
 
-.source {
+.help_wrapper,
+.log_wrapper {
 	color: #666;
+	margin-bottom: 1rem;
 }
 
 a:link, a:visited, a:hover, a:active {
@@ -131,4 +133,10 @@ a:link, a:visited, a:hover, a:active {
 }
 #video_wrapper:-webkit-full-screen #FullScreenBtn:hover{
 	opacity: 1;
+}
+
+.result_log_area {
+	width: 960px;
+	background-color: #000;
+	color: #FFF;
 }

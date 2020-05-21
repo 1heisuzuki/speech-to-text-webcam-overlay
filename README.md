@@ -28,16 +28,14 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 参考: https://ghosthack.net/?p=5680
 
 ### 文字の修正をしたい
-- 現状実装されていません。
-- Google Docsなどの音声入力やUDトークなど，他のツールの利用を検討してください。  
+- 認識結果のログでは修正可能になっています。合成画面上での編集については未実装です。
+- Google Docsなどの音声入力やUDトークなど，他のツールの利用で要望を満たせるかもしれません。
 参考: Google Docs ヘルプ / 音声で入力する https://support.google.com/docs/answer/4492226?hl=ja
 
 ### 文字認識の結果を保存したい
-- 現状実装されていません。
-- Google Docsなどの音声入力やUDトークなど，他のツールの利用を検討してください。  
+- 実装しました。
+- 保存を自動的に行いたい場合は，Google Docsなどの音声入力やUDトークなど，他のツールの利用を検討してください。  
 参考: Google Docs ヘルプ / 音声で入力する https://support.google.com/docs/answer/4492226?hl=ja  
-- Google Docsで認識がすぐに止まってしまうのが不都合な場合，Googleが公開しているWeb Speech APIのサンプルページを使って，ここからコピペするのも一つの方法かもしれません。  
-参考: https://www.google.com/intl/en/chrome/demos/speech.html
 
 ### 自動で翻訳したい
 - 現状実装されていません。
