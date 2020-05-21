@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset=utf-8 />
     <meta http-equiv="Pragma" content="no-cache">
@@ -17,29 +18,42 @@
             <div class="text_overlay">
                 <div id="result_text" class="text_area">音声認識が始まるとここに文字が表示されます。マイクとカメラを有効にしてください。</div>
             </div>
+            <!-- <input type="button" id="FullScreenBtn" class="FullScreenBtn" value="全画面"> -->
+            <img src="fullscreen.png" id="FullScreenBtn" class="FullScreenBtn" width="32" height="32" style="display:block">
+
         </div>
         <div class="control_wrapper">
-            透明度 <input type="range" value="0.9" min="0" max="1" step="0.05" 
-                    oninput="document.getElementById('result_text').style.opacity=this.value,document.getElementById('value_opacity').innerHTML=this.value">
-                <span id="value_opacity" class="value">0.9</span>，
-            大きさ <input type="range" value="68" min="1" max="150" step="1" 
-                    oninput="document.getElementById('result_text').style.fontSize=this.value+'px',document.getElementById('value_font_size').innerHTML=this.value">
-                <span id="value_font_size" class="value">68</span>px，
-            行間 <input type="range" value="165" min="100" max="300" step="1" 
-                    oninput="document.getElementById('result_text').style.lineHeight=this.value+'%',document.getElementById('value_line_height').innerHTML=this.value">
-                <span id="value_line_height" class="value">165</span>%，
-            字間 <input type="range" value="0.2" min="0" max="2" step="0.01" 
-                    oninput="document.getElementById('result_text').style.letterSpacing=this.value+'rem',document.getElementById('value_letter_spacing').innerHTML=this.value">
-                <span id="value_letter_spacing" class="value">0.2</span>
-            <br/>
-            <input type="button" value="カメラ表示/非表示" 
+            透明度 <input type="range" value="0.9" min="0" max="1" step="0.05"
+                oninput="document.getElementById('result_text').style.opacity=this.value,document.getElementById('value_opacity').innerHTML=this.value">
+            <span id="value_opacity" class="value">0.9</span>，
+            大きさ <input type="range" value="68" min="1" max="150" step="1"
+                oninput="document.getElementById('result_text').style.fontSize=this.value+'px',document.getElementById('value_font_size').innerHTML=this.value">
+            <span id="value_font_size" class="value">68</span>px，
+            行間 <input type="range" value="165" min="100" max="300" step="1"
+                oninput="document.getElementById('result_text').style.lineHeight=this.value+'%',document.getElementById('value_line_height').innerHTML=this.value">
+            <span id="value_line_height" class="value">165</span>%，
+            字間 <input type="range" value="0.2" min="0" max="2" step="0.01"
+                oninput="document.getElementById('result_text').style.letterSpacing=this.value+'rem',document.getElementById('value_letter_spacing').innerHTML=this.value">
+            <span id="value_letter_spacing" class="value">0.2</span>，
+            色 <input type="color" value="#ffffff"
+                oninput="document.getElementById('result_text').style.color=this.value,document.getElementById('value_font_color').innerHTML=this.value">
+            <span id="value_font_color" class="value">#ffffff</span>
+
+            <br />
+            <input type="button" value="カメラ表示/非表示"
                 onclick="document.getElementById('result_video').classList.toggle('hidden'),document.getElementById('bg_green_toggle').classList.toggle('hidden')">
-            <input type="button" id="bg_green_toggle" class="hidden" value="グリーンバック表示/非表示" onclick="document.getElementById('video_wrapper').classList.toggle('bg_green')">
+            <input type="button" id="bg_green_toggle" class="hidden" value="グリーンバック表示/非表示"
+                onclick="document.getElementById('video_wrapper').classList.toggle('bg_green')">
+            <input type="button" value="全画面表示アイコン表示/非表示"
+                onclick="document.getElementById('FullScreenBtn').classList.toggle('hidden')">
         </div>
         <div class="source">
-            <span id="help" class="">カメラやマイクが機能しないときはページを再読み込みするか，ブラウザの設定を確認してください: <a href="https://support.google.com/chrome/answer/2693767?co=GENIE.Platform%3DDesktop&hl=ja&oco=1" target="_blank">Google Chrome ヘルプページ</a></span><br/>
-            音声認識は <a href="https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API" target="_blank">Web Speech API</a> を利用し，日本語の音声を認識する設定になっています。<br/>
-            Source: <a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay" target="_blank">GitHub</a>
+            <span id="help" class="">カメラやマイクが機能しないときはページを再読み込みするか，ブラウザの設定を確認してください: <a
+                    href="https://support.google.com/chrome/answer/2693767?co=GENIE.Platform%3DDesktop&hl=ja&oco=1"
+                    target="_blank">Google Chrome ヘルプページ</a></span><br />
+            音声認識は <a href="https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API" target="_blank">Web Speech
+                API</a> を利用し，日本語の音声を認識する設定になっています。<br />
+            Source: <a href="https://github.com/syado/speech-to-text-webcam-overlay" target="_blank">GitHub</a>
         </div>
     </div>
 </body>
@@ -50,24 +64,24 @@
     var userAgent = window.navigator.userAgent.toLowerCase();
     var isChrome = 0;
 
-    if(userAgent.indexOf('msie') != -1 || userAgent.indexOf('trident') != -1) {
+    if (userAgent.indexOf('msie') != -1 || userAgent.indexOf('trident') != -1) {
         // IE
-    } else if(userAgent.indexOf('edge') != -1) {
+    } else if (userAgent.indexOf('edge') != -1) {
         // Edge
-    } else if(userAgent.indexOf('chrome') != -1) {
+    } else if (userAgent.indexOf('chrome') != -1) {
         // Chrome
         isChrome = 1;
-    } else if(userAgent.indexOf('safari') != -1) {
+    } else if (userAgent.indexOf('safari') != -1) {
         // Safari
-    } else if(userAgent.indexOf('firefox') != -1) {
+    } else if (userAgent.indexOf('firefox') != -1) {
         // Firefox
-    } else if(userAgent.indexOf('opera') != -1) {
+    } else if (userAgent.indexOf('opera') != -1) {
         // Opera
     } else {
         // その他
     }
 
-    if(!isChrome){
+    if (!isChrome) {
         alert('Google Chromeでアクセスしてください')
         document.getElementById('status').innerHTML = "Google Chromeでアクセスしてください";
         document.getElementById('status').className = "error";
@@ -84,21 +98,18 @@
 
     const $video = document.getElementById('result_video');  // 映像表示エリア
 
-    navigator.mediaDevices.getUserMedia({ video: {aspectRatio: {exact: 1.7777777778}}, audio: false })
+    navigator.mediaDevices.getUserMedia({ video: { aspectRatio: { exact: 1.7777777778 } }, audio: false })
         .then(stream => $video.srcObject = stream)
         .catch(err => {
             alert(`カメラ映像を読み込めませんでした。ブラウザのアクセス制限など，設定を確認してください`);
             document.getElementById('help').classList.toggle('help_strong');
         });
-    
-    
+
+
     // 音声認識
     // 参考: https://jellyware.jp/kurage/iot/webspeechapi.html
     var flag_speech = 0;
 
-    window.onload = function(){
-        vr_function();
-    }
 
     function vr_function() {
         window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
@@ -107,27 +118,27 @@
         recognition.interimResults = true;
         recognition.continuous = true;
 
-        recognition.onsoundstart = function() {
+        recognition.onsoundstart = function () {
             document.getElementById('status').innerHTML = "Processing...";
             document.getElementById('status').className = "processing";
         };
-        recognition.onnomatch = function() {
+        recognition.onnomatch = function () {
             document.getElementById('status').innerHTML = "Try again";
             document.getElementById('status').className = "error";
         };
-        recognition.onerror = function() {
+        recognition.onerror = function () {
             document.getElementById('status').innerHTML = "Error";
             document.getElementById('status').className = "error";
             if (flag_speech == 0)
                 vr_function();
         };
-        recognition.onsoundend = function() {
+        recognition.onsoundend = function () {
             document.getElementById('status').innerHTML = "Stop";
             document.getElementById('status').className = "error";
             vr_function();
         };
 
-        recognition.onresult = function(event) {
+        recognition.onresult = function (event) {
             var results = event.results;
             for (var i = event.resultIndex; i < results.length; i++) {
                 if (results[i].isFinal) {
@@ -146,5 +157,110 @@
         document.getElementById('status').className = "ready";
         recognition.start();
     }
+
+    
+    // 参考: https://blog.katsubemakito.net/html5/fullscreen
+    /**
+     * フルスクリーン開始/終了時のイベント設定
+     *
+     * @param {function} callback
+     */
+    function eventFullScreen(callback) {
+        document.addEventListener("fullscreenchange", callback, false);
+        document.addEventListener("webkitfullscreenchange", callback, false);
+        document.addEventListener("mozfullscreenchange", callback, false);
+        document.addEventListener("MSFullscreenChange", callback, false);
+    }
+
+    /**
+     * フルスクリーンが利用できるか
+     *
+     * @return {boolean}
+     */
+    function enabledFullScreen() {
+        return (
+            document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen || document.msFullscreenEnabled
+        );
+    }
+
+    /**
+     * フルスクリーンにする
+     *
+     * @param {object} [element]
+     */
+    function goFullScreen(element = null) {
+
+        const doc = window.document;
+        const docEl = (element === null) ? doc.documentElement : element;
+        let requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+        requestFullScreen.call(docEl);
+    }
+
+    /**
+     * フルスクリーンをやめる
+     */
+    function cancelFullScreen() {
+        const doc = window.document;
+        const cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+        cancelFullScreen.call(doc);
+    }
+
+    /**
+     * フルスクリーン中のオブジェクトを返却
+     */
+    function getFullScreenObject() {
+        const doc = window.document;
+        const objFullScreen = doc.fullscreenElement || doc.mozFullScreenElement || doc.webkitFullscreenElement || doc.msFullscreenElement;
+        return (objFullScreen);
+    }
+    
+    const FullScreenBtn = document.querySelector("#FullScreenBtn");   // フルスクリーン化ボタン
+
+    window.onload = () => {
+        vr_function();
+        const video_doc = document.querySelector("#video_wrapper");      // フルスクリーンにするオブジェクト
+
+        //--------------------------------
+        // [event] 開始ボタンをクリック
+        //--------------------------------
+        FullScreenBtn.addEventListener("click", () => {
+            if (getFullScreenObject()) {
+                // フルスクリーンを解除
+                cancelFullScreen(video_doc);
+            }
+            else {
+                // フルスクリーンを開始
+                if (!enabledFullScreen()) {
+                    alert("フルスクリーンに対応していません");
+                    return (false);
+                }
+                goFullScreen(video_doc);
+                
+            }
+        });
+
+        //--------------------------------
+        // フルスクリーンイベント
+        //--------------------------------
+        eventFullScreen(() => {
+            // ボタンを入れ替える
+            if (getFullScreenObject()) {
+                // フルスクリーン時に文字と画面の比率を維持
+                const ratio = window.parent.screen.height / document.querySelector("#result_video").clientHeight 
+                document.querySelector('#result_text').style.fontSize =  Number(document.querySelector("#value_font_size").textContent) * ratio  +'px';
+                document.querySelector('#result_text').style.letterSpacing = Number(document.querySelector("#value_letter_spacing").textContent) * ratio +'rem';
+                console.log("フルスクリーン開始");
+                
+            }
+            else {
+                // フルスクリーン時から通常画面に戻るときに文字と画面の比率を維持
+                document.querySelector('#result_text').style.fontSize = document.querySelector("#value_font_size").textContent+'px';
+                document.querySelector('#result_text').style.letterSpacing = Number(document.querySelector("#value_letter_spacing").textContent)+'rem';
+                console.log("フルスクリーン終了");
+
+            }
+        });
+    };
 </script>
+
 </html>
