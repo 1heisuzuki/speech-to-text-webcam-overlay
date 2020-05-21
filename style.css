@@ -35,7 +35,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .hidden {
-	opacity: 0;
+	opacity: 0 !important;
 }
 
 .bg_green {
@@ -115,6 +115,7 @@ a:link, a:visited, a:hover, a:active {
 	right: 0px;
 	bottom: 0px;
 	opacity: 0.8;
+	transition: all 0.3s;
 }
 #FullScreenBtn:hover{
 	opacity: 1;
