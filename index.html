@@ -7,7 +7,7 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <title>Speech to Text Webcam Overlay</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?ver=202005212248" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="style.css?ver=202005212300" type="text/css" media="screen" charset="utf-8" />
 </head>
 
 <body>
@@ -24,23 +24,42 @@
 
         </div>
         <div class="control_wrapper">
-            透明度 <input type="range" value="0.9" min="0" max="1" step="0.05"
-                oninput="document.getElementById('result_text').style.opacity=this.value,document.getElementById('value_opacity').innerHTML=this.value">
-            <span id="value_opacity" class="value">0.9</span>，
-            大きさ <input type="range" value="68" min="1" max="150" step="1"
-                oninput="document.getElementById('result_text').style.fontSize=this.value+'px',document.getElementById('value_font_size').innerHTML=this.value">
-            <span id="value_font_size" class="value">68</span>px，
-            行間 <input type="range" value="165" min="100" max="300" step="1"
-                oninput="document.getElementById('result_text').style.lineHeight=this.value+'%',document.getElementById('value_line_height').innerHTML=this.value">
-            <span id="value_line_height" class="value">165</span>%，
-            字間 <input type="range" value="0.2" min="0" max="2" step="0.01"
-                oninput="document.getElementById('result_text').style.letterSpacing=this.value+'rem',document.getElementById('value_letter_spacing').innerHTML=this.value">
-            <span id="value_letter_spacing" class="value">0.2</span>，
-            色 <input type="color" value="#ffffff"
-                oninput="document.getElementById('result_text').style.color=this.value,document.getElementById('value_font_color').innerHTML=this.value">
-            <span id="value_font_color" class="value">#ffffff</span>
+            <form class="control_form">
+                <label for="slider_opacity" class="control_label">透明度</label>
+                <input id="slider_opacity"type="range" class="control_input" value="0.9" min="0" max="1" step="0.05"
+                    oninput="document.getElementById('result_text').style.opacity=this.value,document.getElementById('value_opacity').innerHTML=this.value">
+                <div class="control_value">
+                    <span id="value_opacity">0.9</span>
+                </div>
 
-            <br />
+                <label for="slider_font_size" class="control_label">大きさ</label>
+                <input id="slider_font_size" type="range" class="control_input" value="68" min="1" max="150" step="1"
+                    oninput="document.getElementById('result_text').style.fontSize=this.value+'px',document.getElementById('value_font_size').innerHTML=this.value">
+                <div class="control_value">
+                    <span id="value_font_size">68</span>px
+                </div>
+
+                <label for="slider_line_height" class="control_label">行間</label>
+                <input id="slider_line_height" type="range" class="control_input" value="165" min="100" max="300" step="1"
+                    oninput="document.getElementById('result_text').style.lineHeight=this.value+'%',document.getElementById('value_line_height').innerHTML=this.value">
+                <div class="control_value">
+                    <span id="value_line_height">165</span>%
+                </div>
+    
+                <label for="slider_letter_spacing" class="control_label">字間</label>
+                <input id="slider_letter_spacing" type="range" class="control_input" value="0.2" min="0" max="2" step="0.01"
+                    oninput="document.getElementById('result_text').style.letterSpacing=this.value+'rem',document.getElementById('value_letter_spacing').innerHTML=this.value">
+                <div class="control_value">
+                    <span id="value_letter_spacing">0.2</span>
+                </div>
+
+                <label for="selector_font_color" class="control_label">色</label>
+                <input id="selector_font_color" type="color" class="control_input" value="#ffffff"
+                    oninput="document.getElementById('result_text').style.color=this.value,document.getElementById('value_font_color').innerHTML=this.value">
+                <div class="control_value">
+                    <span id="value_font_color">#ffffff</span>
+                </div>
+            </form>
             <input type="button" value="カメラ表示/非表示"
                 onclick="document.getElementById('result_video').classList.toggle('hidden')">
             <input type="button" id="bg_green_toggle" value="グリーンバック表示/非表示"
