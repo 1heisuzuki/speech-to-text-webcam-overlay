@@ -61,7 +61,6 @@ a:link, a:visited, a:hover, a:active {
 	bottom: 0;
 	margin: auto;
 	overflow: hidden;
-	font-family: 'Noto Sans JP', sans-serif;
 }
 
 .text_area{
@@ -69,6 +68,7 @@ a:link, a:visited, a:hover, a:active {
 	position: absolute;
 	bottom: 0;
 	left: 0;
+	font-family: 'Noto Sans JP', sans-serif;
 	font-size: 68px;
 	font-weight: 500;
 	letter-spacing: 0.2rem;
@@ -138,5 +138,6 @@ a:link, a:visited, a:hover, a:active {
 .result_log_area {
 	width: 960px;
 	background-color: #000;
+	font-family: 'Noto Sans JP', sans-serif;
 	color: #FFF;
 }
