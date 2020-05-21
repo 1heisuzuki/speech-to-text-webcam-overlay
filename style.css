@@ -114,11 +114,14 @@ a:link, a:visited, a:hover, a:active {
 	position: absolute;
 	right: 0px;
 	bottom: 0px;
-	opacity: 0.6;
+	opacity: 0.8;
+}
+#FullScreenBtn:hover{
+	opacity: 1;
 }
 #video_wrapper:-webkit-full-screen #FullScreenBtn{
-	opacity: 0.2;
+	opacity: 0.8;
 }
 #video_wrapper:-webkit-full-screen #FullScreenBtn:hover{
-	opacity: 0.6;
+	opacity: 1;
 }
