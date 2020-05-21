@@ -15,6 +15,7 @@
         <div id="status" class="error"></div>
         <div id="video_wrapper" class="video_wrapper">
             <video id="result_video" class="video_area" autoplay></video>
+            <div id="bg_green" class="bg_green hidden"></div>
             <div class="text_overlay">
                 <div id="result_text" class="text_area">音声認識が始まるとここに文字が表示されます。マイクとカメラを有効にしてください。</div>
             </div>
@@ -41,9 +42,9 @@
 
             <br />
             <input type="button" value="カメラ表示/非表示"
-                onclick="document.getElementById('result_video').classList.toggle('hidden'),document.getElementById('bg_green_toggle').classList.toggle('hidden')">
-            <input type="button" id="bg_green_toggle" class="hidden" value="グリーンバック表示/非表示"
-                onclick="document.getElementById('video_wrapper').classList.toggle('bg_green')">
+                onclick="document.getElementById('result_video').classList.toggle('hidden')">
+            <input type="button" id="bg_green_toggle" value="グリーンバック表示/非表示"
+                onclick="document.getElementById('bg_green').classList.toggle('hidden')">
             <input type="button" value="全画面表示アイコン表示/非表示"
                 onclick="document.getElementById('FullScreenBtn').classList.toggle('hidden')">
         </div>
@@ -53,7 +54,7 @@
                     target="_blank">Google Chrome ヘルプページ</a></span><br />
             音声認識は <a href="https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API" target="_blank">Web Speech
                 API</a> を利用し，日本語の音声を認識する設定になっています。<br />
-            Source: <a href="https://github.com/1heisuzuk/speech-to-text-webcam-overlay" target="_blank">GitHub</a>
+            よくある質問・ソースコード: <a href="https://github.com/1heisuzuk/speech-to-text-webcam-overlay" target="_blank">GitHub</a>
         </div>
     </div>
 </body>
