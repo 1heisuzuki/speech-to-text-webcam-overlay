@@ -12,6 +12,7 @@ body {
 
 .help_wrapper,
 .log_wrapper {
+	line-height: 150%;
 	color: #666;
 	margin-bottom: 1rem;
 }
@@ -280,4 +281,10 @@ input[type="color"] {
 	color: #F00;
 	display: none;
 	margin-bottom: 1rem;
+}
+
+.help_text {
+	font-size: 85%;
+	line-height: 125%;
+	margin-bottom: 0.5rem;
 }

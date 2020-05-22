@@ -127,16 +127,22 @@
             </div>
         </div>
         <div class="log_wrapper">
-            認識結果のログ <span style="font-size: 80%;">*認識結果が確定したタイミングで反映されます。テキストの編集・コピーも可能です。</span><br/>
+            認識結果のログ
+            <div class="help_text">
+                *認識結果が確定したタイミングで反映されます。テキストの編集・コピーも可能です。<br/>
+                **認識中にEnterキーを押すと，認識を止めて文を区切ることができます。文末には句点が付与されます。</span>
+            </div>
             <textarea id="result_log" class="result_log_area" onchange="textAreaHeightSet(this)"></textarea><br/>
         </div>
         <div class="help_wrapper">
-            カメラやマイクが機能しないとき → ページの再読み込みや，ブラウザの設定を確認してください: <a
-                    href="https://support.google.com/chrome/answer/2693767?co=GENIE.Platform%3DDesktop&hl=ja&oco=1"
-                    target="_blank">Chrome ヘルプ</a><br />
-            音声認識は <a href="https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API" target="_blank">Web Speech
-                API</a> を利用し，日本語の音声を認識する設定になっています。<br />
-            よくある質問・ソースコード: <a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay" target="_blank">GitHub</a>
+            <div class="help_text">
+                カメラやマイクが機能しないとき → ページの再読み込みや，ブラウザの設定を確認してください: <a
+                        href="https://support.google.com/chrome/answer/2693767?co=GENIE.Platform%3DDesktop&hl=ja&oco=1"
+                        target="_blank">Chrome ヘルプ</a><br />
+                音声認識は <a href="https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API" target="_blank">Web Speech
+                    API</a> を利用し，日本語の音声を認識する設定になっています。<br />
+                よくある質問・ソースコード: <a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay" target="_blank">GitHub</a>
+            </div>
         </div>
     </div>
 </body>
