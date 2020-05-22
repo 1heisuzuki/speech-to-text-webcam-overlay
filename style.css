@@ -164,6 +164,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .control_wrapper {
+	width: 100%;
 	font-size: 16px;
 	line-height: 200%;
 	margin-bottom: 1rem;
@@ -183,10 +184,11 @@ a:link, a:visited, a:hover, a:active {
 .control_form_slider {
     flex: 0 0 25%;
 	max-width: 25%;
-	grid-template-columns: 70px 117px 1fr;
+	grid-template-columns: 60px 130px 1fr;
 }
 
-.control_form_slider .control_label {
+.control_form_slider .control_label,
+.control_form_color .control_label {
 	grid-column: 1 / 2;
 	line-height: 230%;
 	text-align: right;
@@ -201,10 +203,21 @@ a:link, a:visited, a:hover, a:active {
 	line-height: 230%;
 }
 
+.value_unit {
+	font-size: 70%;
+	padding-left: 0.1rem;
+}
+
+.control_form_color {
+	flex: 0 0 17%;
+	max-width: 17%;
+	grid-template-columns: 40px 100px 1fr;
+}
+
 .control_form_radio {
-	flex: 0 0 50%;
-	max-width: 50%;
-	grid-template-columns: 70px 1fr;
+	flex: 0 0 33%;
+	max-width: 33%;
+	grid-template-columns: 60px 1fr;
 }
 
 .control_form_radio .control_label {
@@ -217,8 +230,6 @@ a:link, a:visited, a:hover, a:active {
 	line-height: 230%;
 }
 
-
-
 input[type="color"] {
 	width: 100%;
 	height: 100%;
@@ -227,7 +238,9 @@ input[type="color"] {
 }
 
 .control_button_wrapper {
-	margin-top: 0.4rem;
+	width: 100%;
+	margin-top: 0.2rem;
+	text-align: center;
 }
 
 .control_button {
@@ -259,5 +272,12 @@ input[type="color"] {
 	background-color: #000;
 	font-family: 'Noto Sans JP', sans-serif;
 	font-size: 100%;
-	color: #FFF;
+	color: #AAA;
+}
+
+.help_on_error {
+	text-align: center;
+	color: #F00;
+	display: none;
+	margin-bottom: 1rem;
 }
