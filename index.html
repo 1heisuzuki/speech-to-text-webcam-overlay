@@ -118,12 +118,12 @@
             </div>
 
             <div class="control_button_wrapper">
-                <input type="button" value="カメラ表示/非表示" class="control_button"
+                <input type="button" value="カメラ表示/非表示"
                     onclick="document.getElementById('result_video').classList.toggle('hidden')">
-                <input type="button" id="bg_green_toggle" value="グリーンバック表示/非表示" class="control_button"
+                <input type="button" id="bg_green_toggle" value="グリーンバック表示/非表示"
                     onclick="document.getElementById('bg_green').classList.toggle('hidden')">
-                <input type="button" value="全画面表示アイコン表示/非表示" class="control_button"
-                    onclick="document.getElementById('FullScreenBtn').classList.toggle('hidden')">
+                <input type="button" value="全画面表示アイコン表示/非表示" 
+                onclick="document.getElementById('FullScreenBtn').classList.toggle('hidden')">
             </div>
         </div>
         <div class="log_wrapper">
@@ -133,15 +133,19 @@
                 **認識中にEnterキーを押すと，認識を止めて文を区切ることができます。文末には句点が付与されます。</span>
             </div>
             <textarea id="result_log" class="result_log_area" onchange="textAreaHeightSet(this)"></textarea><br/>
+            <div style="text-align: center; opacity: 0.6;">
+                <input type="button" value="ログをダウンロード" onclick="downloadLogFile(this)">
+            </div>
         </div>
         <div class="help_wrapper">
             <div class="help_text">
+                よくある質問・ソースコード: <a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay" target="_blank">GitHub</a><br />
+                音声認識は <a href="https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API" target="_blank">Web Speech
+                    API</a> を利用し，日本語の音声を認識する設定になっています。<br />
                 カメラやマイクが機能しないとき → ページの再読み込みや，ブラウザの設定を確認してください: <a
                         href="https://support.google.com/chrome/answer/2693767?co=GENIE.Platform%3DDesktop&hl=ja&oco=1"
                         target="_blank">Chrome ヘルプ</a><br />
-                音声認識は <a href="https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API" target="_blank">Web Speech
-                    API</a> を利用し，日本語の音声を認識する設定になっています。<br />
-                よくある質問・ソースコード: <a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay" target="_blank">GitHub</a>
+                「ログをダウンロード」でダウンロードされるファイルは，アクセスしているユーザーのブラウザで生成されています。
             </div>
         </div>
     </div>
@@ -264,7 +268,8 @@
         // テキストエリアの高さを設定する
         argObj.style.height = wSclollHeight + "px";
     }
-    
+
+    // 認識を手動で止める（文を区切る）
     document.addEventListener('keydown',
     event => {
         if (event.key === 'Enter') {
@@ -273,6 +278,25 @@
             }
         }
     });
+
+    // 認識結果のログをダウンロードする
+    // 参考: https://qiita.com/kerupani129/items/99fd7a768538fcd33420
+    function downloadLogFile(){
+        const a = document.createElement('a');
+        a.href = 'data:text/plain,' + encodeURIComponent(document.getElementById('result_log').value);
+
+        var now = new window.Date();
+        var Year = now.getFullYear();
+        var Month = (("0"+(now.getMonth()+1)).slice(-2));
+        var Date = ("0"+now.getDate()).slice(-2);
+        var Hour = ("0"+now.getHours()).slice(-2);
+        var Min = ("0"+now.getMinutes()).slice(-2);
+        var Sec = ("0"+now.getSeconds()).slice(-2);
+
+        a.download = 'log_' + Year + Month + Date + '_' + Hour + Min + Sec + '.txt';
+
+        a.click();
+    }
 
     // 参考: https://blog.katsubemakito.net/html5/fullscreen
     /**
