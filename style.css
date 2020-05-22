@@ -166,7 +166,6 @@ a:link, a:visited, a:hover, a:active {
 .control_wrapper {
 	font-size: 16px;
 	line-height: 200%;
-	margin-top: 1rem;
 	margin-bottom: 1rem;
 	opacity: 0.6;
     display: flex;
@@ -184,7 +183,7 @@ a:link, a:visited, a:hover, a:active {
 .control_form_slider {
     flex: 0 0 25%;
 	max-width: 25%;
-	grid-template-columns: 50px 140px 1fr;
+	grid-template-columns: 70px 117px 1fr;
 }
 
 .control_form_slider .control_label {
@@ -205,7 +204,7 @@ a:link, a:visited, a:hover, a:active {
 .control_form_radio {
 	flex: 0 0 50%;
 	max-width: 50%;
-	grid-template-columns: 50px 1fr;
+	grid-template-columns: 70px 1fr;
 }
 
 .control_form_radio .control_label {
