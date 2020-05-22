@@ -16,7 +16,7 @@
         <div id="video_wrapper" class="video_wrapper">
             <video id="result_video" class="video_area" autoplay></video>
             <div id="bg_green" class="bg_green hidden"></div>
-            <div id="result_text_overlay" class="text_overlay">
+            <div id="text_overlay_wrapper" class="text_overlay_wrapper">
                 <div id="result_text" class="text_area">音声認識が始まるとここに文字が表示されます。マイクとカメラを有効にしてください。</div>
             </div>
             <!-- <input type="button" id="FullScreenBtn" class="FullScreenBtn" value="全画面"> -->
@@ -82,29 +82,29 @@
                 <label for="selector_position" class="control_label">位置</label>
                 <div class="control_input">
                     <input id="selector_position" type="radio" name='selector_position'
-                        oninput="document.getElementById('result_text_overlay').style.width='80%',document.getElementById('result_text_overlay').style.height='80%',
-                        document.getElementById('result_text_overlay').style.top='10%',document.getElementById('result_text_overlay').style.left='10%',
-                        document.getElementById('result_text_overlay').style.right='10%',document.getElementById('result_text_overlay').style.bottom='10%',
+                        oninput="document.getElementById('text_overlay_wrapper').style.width='80%',document.getElementById('text_overlay_wrapper').style.height='80%',
+                        document.getElementById('text_overlay_wrapper').style.top='10%',document.getElementById('text_overlay_wrapper').style.left='10%',
+                        document.getElementById('text_overlay_wrapper').style.right='10%',document.getElementById('text_overlay_wrapper').style.bottom='10%',
                         document.getElementById('result_text').style.backgroundColor='rgba(0,0,0,0.0)'" checked> 全体
                     <input id="selector_position" type="radio" name='selector_position'
-                        oninput="document.getElementById('result_text_overlay').style.width='50%',document.getElementById('result_text_overlay').style.height='80%',
-                        document.getElementById('result_text_overlay').style.top='10%',document.getElementById('result_text_overlay').style.left='10%',
-                        document.getElementById('result_text_overlay').style.right='40%',document.getElementById('result_text_overlay').style.bottom='10%',
+                        oninput="document.getElementById('text_overlay_wrapper').style.width='50%',document.getElementById('text_overlay_wrapper').style.height='80%',
+                        document.getElementById('text_overlay_wrapper').style.top='10%',document.getElementById('text_overlay_wrapper').style.left='10%',
+                        document.getElementById('text_overlay_wrapper').style.right='40%',document.getElementById('text_overlay_wrapper').style.bottom='10%',
                         document.getElementById('result_text').style.backgroundColor='rgba(0,0,0,0.3)'"> 左
                     <input id="selector_position" type="radio"  name='selector_position'
-                        oninput="document.getElementById('result_text_overlay').style.width='50%',document.getElementById('result_text_overlay').style.height='80%',
-                        document.getElementById('result_text_overlay').style.top='10%',document.getElementById('result_text_overlay').style.left='40%',
-                        document.getElementById('result_text_overlay').style.right='40%',document.getElementById('result_text_overlay').style.bottom='10%',
+                        oninput="document.getElementById('text_overlay_wrapper').style.width='50%',document.getElementById('text_overlay_wrapper').style.height='80%',
+                        document.getElementById('text_overlay_wrapper').style.top='10%',document.getElementById('text_overlay_wrapper').style.left='40%',
+                        document.getElementById('text_overlay_wrapper').style.right='40%',document.getElementById('text_overlay_wrapper').style.bottom='10%',
                         document.getElementById('result_text').style.backgroundColor='rgba(0,0,0,0.3)'"> 右
                     <input id="selector_position" type="radio" name='selector_position'
-                        oninput="document.getElementById('result_text_overlay').style.width='80%',document.getElementById('result_text_overlay').style.height='40%',
-                        document.getElementById('result_text_overlay').style.top='10%',document.getElementById('result_text_overlay').style.left='10%',
-                        document.getElementById('result_text_overlay').style.right='10%',document.getElementById('result_text_overlay').style.bottom='50%',
+                        oninput="document.getElementById('text_overlay_wrapper').style.width='80%',document.getElementById('text_overlay_wrapper').style.height='40%',
+                        document.getElementById('text_overlay_wrapper').style.top='10%',document.getElementById('text_overlay_wrapper').style.left='10%',
+                        document.getElementById('text_overlay_wrapper').style.right='10%',document.getElementById('text_overlay_wrapper').style.bottom='50%',
                         document.getElementById('result_text').style.backgroundColor='rgba(0,0,0,0.3)'"> 上
                     <input id="selector_position" type="radio" name='selector_position'
-                        oninput="document.getElementById('result_text_overlay').style.width='80%',document.getElementById('result_text_overlay').style.height='40%',
-                        document.getElementById('result_text_overlay').style.top='50%',document.getElementById('result_text_overlay').style.left='10%',
-                        document.getElementById('result_text_overlay').style.right='10%',document.getElementById('result_text_overlay').style.bottom='10%',
+                        oninput="document.getElementById('text_overlay_wrapper').style.width='80%',document.getElementById('text_overlay_wrapper').style.height='40%',
+                        document.getElementById('text_overlay_wrapper').style.top='50%',document.getElementById('text_overlay_wrapper').style.left='10%',
+                        document.getElementById('text_overlay_wrapper').style.right='10%',document.getElementById('text_overlay_wrapper').style.bottom='10%',
                         document.getElementById('result_text').style.backgroundColor='rgba(0,0,0,0.3)'"> 下
                 </div>
             </div>
