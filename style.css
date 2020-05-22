@@ -65,7 +65,7 @@ a:link, a:visited, a:hover, a:active {
 	left: 10%;
 	right: 10%;
 	bottom: 10%;
-	background-color: rgba(0,0,0,0);
+	background-color: rgba(0,0,0,0) !important;
 }
 
 .text_overlay_wrapper.split {
