@@ -61,7 +61,7 @@ a:link, a:visited, a:hover, a:active {
 	right: 10%;
 	bottom: 10%;
 	overflow: hidden;
-	transition: all 0.3s;
+	transition: all 0.5s;
 }
 
 .text_area{
