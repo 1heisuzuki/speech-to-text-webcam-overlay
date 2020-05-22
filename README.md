@@ -10,6 +10,8 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 - PC版 Google Chrome
   - 最新のWindows, macOSでなんとなく確認済
   - 詳しい動作検証はしていないのでご了承ください :pray:
+- Android端末 Chrome
+  - 筆者が端末を所持していないため未検証だが，動いたとの情報あり
 
 # よくある質問
 ## 使用環境関係
