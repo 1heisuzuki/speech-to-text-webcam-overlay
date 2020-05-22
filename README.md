@@ -45,7 +45,7 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 
 ### 他の言語を認識したい
 - 現状実装されていません（日本語固定設定）。
-- Googleが公開しているWeb Speech APIのサンプルページでは言語を切り替えて利用できません  
+- Googleが公開しているWeb Speech APIのサンプルページでは言語を切り替えて利用できます。   
 参考: https://www.google.com/intl/en/chrome/demos/speech.html
 
 ## その他
