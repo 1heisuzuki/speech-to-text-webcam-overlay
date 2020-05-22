@@ -127,28 +127,49 @@ a:link, a:visited, a:hover, a:active {
 .control_form {
 	box-sizing: border-box;
 	display: grid;
-	grid-template-columns: 50px 140px 1fr;
 	grid-gap: 0rem 0.25rem;
 	position: relative;
     width: 100%;
-    flex: 0 0 25%;
-    max-width: 25%;
 }
 
-.control_label {
+.control_form_slider {
+    flex: 0 0 25%;
+	max-width: 25%;
+	grid-template-columns: 50px 140px 1fr;
+}
+
+.control_form_slider .control_label {
 	grid-column: 1 / 2;
 	line-height: 230%;
 	text-align: right;
 }
 	
-.control_input {
+.control_form_slider .control_input {
 	grid-column: 2 / 3;
 }
 
-.control_value {
+.control_form_slider .control_value {
 	grid-column: 3 / 4;
 	line-height: 230%;
 }
+
+.control_form_radio {
+	flex: 0 0 50%;
+	max-width: 50%;
+	grid-template-columns: 50px 1fr;
+}
+
+.control_form_radio .control_label {
+	grid-column: 1 / 2;
+	line-height: 230%;
+	text-align: right;
+}
+
+.control_form_radio .control_input {
+	line-height: 230%;
+}
+
+
 
 input[type="color"] {
 	width: 100%;
