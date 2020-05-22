@@ -193,10 +193,11 @@
     // 参考: https://jellyware.jp/kurage/iot/webspeechapi.html
     var flag_speech = 0;
 
+    var recognition;
 
     function vr_function() {
         window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
-        var recognition = new webkitSpeechRecognition();
+        recognition = new webkitSpeechRecognition();
         recognition.lang = 'ja';
         recognition.interimResults = true;
         recognition.continuous = true;
@@ -257,8 +258,16 @@
         // テキストエリアの高さを設定する
         argObj.style.height = wSclollHeight + "px";
     }
-
     
+    document.addEventListener('keydown',
+    event => {
+        if (event.key === 'Enter') {
+            if(flag_speech == 1){
+                recognition.stop();
+            }
+        }
+    });
+
     // 参考: https://blog.katsubemakito.net/html5/fullscreen
     /**
      * フルスクリーン開始/終了時のイベント設定
