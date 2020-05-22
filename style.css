@@ -54,21 +54,52 @@ a:link, a:visited, a:hover, a:active {
 .text_overlay_wrapper {
     box-sizing: border-box;
 	position: absolute;
+	overflow: hidden;
+	transition: all 0.5s;
+}
+
+.text_overlay_wrapper.full {
 	width: 80%;
 	height: 80%;
 	top: 10%;
 	left: 10%;
 	right: 10%;
 	bottom: 10%;
-	overflow: hidden;
-	transition: all 0.5s;
+	background-color: rgba(0,0,0,0);
+}
+
+.text_overlay_wrapper.split {
+	width: 100%;
+    height: 100%;
+	top: 0%;
+	left: 0%;
+	background-color: rgba(0,0,0,0.3);
+}
+
+.text_overlay_wrapper.left{
+	width: 50%;
+}
+
+.text_overlay_wrapper.right{
+	width: 50%;
+    left: 50%;
+}
+
+.text_overlay_wrapper.top{
+    height: 30%;
+}
+
+.text_overlay_wrapper.bottom{
+	height: 30%;
+	top: 70%;
 }
 
 .text_area{
 	box-sizing: border-box;
 	position: absolute;
-	bottom: 0;
+	bottom: -0.5rem;
 	left: 0;
+	padding: 0.5rem;
 	font-family: 'Noto Sans JP', sans-serif;
 	font-size: 68px;
 	font-weight: 500;
@@ -80,7 +111,24 @@ a:link, a:visited, a:hover, a:active {
 	-webkit-text-stroke-color: #000;
 	text-align: justify;
 	opacity: 0.9;
-	background-color: rgba(0,0,0,0);
+}
+
+.text_overlay_wrapper.split .text_area{
+	padding: 0.5rem 1.5rem;
+}
+
+.text_overlay_wrapper.left .text_area,
+.text_overlay_wrapper.right .text_area{
+	font-size: 50px;
+	line-height: 130%;
+	padding: 1.4rem 1.5rem;
+}
+
+.text_overlay_wrapper.top .text_area,
+.text_overlay_wrapper.bottom .text_area{
+	font-size: 50px;
+	line-height: 150%;
+	padding: 1rem 1.5rem;
 }
 
 #status {
