@@ -259,6 +259,10 @@ select {
 	display: inline;
 }
 
+.select_dialect {
+	margin-right: 1rem;
+}
+
 .control_selector_wrapper {
 	width: 100%;
 	margin-top: 1rem;
