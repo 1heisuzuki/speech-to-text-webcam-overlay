@@ -46,9 +46,7 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 参考: https://cloud.google.com/translate
 
 ### 他の言語を認識したい
-- 現状実装されていません（日本語固定設定）。
-- Googleが公開しているWeb Speech APIのサンプルページでは言語を切り替えて利用できます。   
-参考: https://www.google.com/intl/en/chrome/demos/speech.html
+- 実装しました。操作パネルで「Japanese」と書かれているところから，他の言語を選択してください。
 
 ## その他
 ### ブログや生配信で紹介したい
@@ -60,9 +58,17 @@ https://github.com/DigitalNatureGroup/Remote_Voice_Recognition
 
 # 参考資料
 コードを書くにあたって参考にしたWebページ等
-- HTML5のWebRTCでPCに接続されたカメラ映像をウェブブラウザー上に表示してコマ画像を保存したい  
-https://qiita.com/qiita_mona/items/e58943cf74c40678050a
+- Web Speech API Demonstration  
+https://www.google.com/intl/ja/chrome/demos/speech.html
 - Web Speech APIで途切れない音声認識  
 https://jellyware.jp/kurage/iot/webspeechapi.html
+- HTML5のWebRTCでPCに接続されたカメラ映像をウェブブラウザー上に表示してコマ画像を保存したい  
+https://qiita.com/qiita_mona/items/e58943cf74c40678050a
 - 使用してるブラウザを判定したい  
 https://qiita.com/sakuraya/items/33f93e19438d0694a91d
+- [HTML5] フルスクリーンの開始と解除  
+https://blog.katsubemakito.net/html5/fullscreen
+- テキストエリア(textarea)の高さを自動にする  
+https://webparts.cman.jp/input/textarea/
+- JavaScript でファイル保存・開くダイアログを出して読み書きするまとめ  
+https://qiita.com/kerupani129/items/99fd7a768538fcd33420
