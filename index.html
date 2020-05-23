@@ -378,11 +378,6 @@
     
     const FullScreenBtn = document.querySelector("#FullScreenBtn");   // フルスクリーン化ボタン
 
-    const objResultText = document.querySelector("#result_text");
-    var font_size_windowed = parseFloat(getComputedStyle(objResultText).getPropertyValue('font-size'));
-    var line_height_windowed = parseFloat(getComputedStyle(objResultText).getPropertyValue('line-height'));
-    var letter_spacing_windowed = parseFloat(getComputedStyle(objResultText).getPropertyValue('letter-spacing'));
-
     window.onload = () => {
         vr_function();
         const video_doc = document.querySelector("#video_wrapper");      // フルスクリーンにするオブジェクト
@@ -414,20 +409,15 @@
             if (getFullScreenObject()) {
                 // フルスクリーン時に文字と画面の比率を維持
                 const ratio = window.parent.screen.height / document.querySelector("#result_video").clientHeight 
-                
-                font_size_windowed = parseFloat(getComputedStyle(objResultText).getPropertyValue('font-size'));
-                line_height_windowed = parseFloat(getComputedStyle(objResultText).getPropertyValue('line-height'));
-                letter_spacing_windowed = parseFloat(getComputedStyle(objResultText).getPropertyValue('letter-spacing'));
-
-                document.querySelector('#result_text').style.fontSize =  font_size_windowed * ratio + 'px';
-                document.querySelector('#result_text').style.letterSpacing = letter_spacing_windowed * ratio + 'px';
+                document.querySelector('#result_text').style.fontSize =  Number(document.querySelector("#value_font_size").textContent) * ratio  +'px';
+                document.querySelector('#result_text').style.letterSpacing = Number(document.querySelector("#value_letter_spacing").textContent) * ratio +'rem';
                 console.log("フルスクリーン開始");
                 
             }
             else {
                 // フルスクリーン時から通常画面に戻るときに文字と画面の比率を維持
-                document.querySelector('#result_text').style.fontSize = font_size_windowed + 'px';
-                document.querySelector('#result_text').style.letterSpacing = letter_spacing_windowed + 'px';
+                document.querySelector('#result_text').style.fontSize = document.querySelector("#value_font_size").textContent+'px';
+                document.querySelector('#result_text').style.letterSpacing = Number(document.querySelector("#value_letter_spacing").textContent)+'rem';
                 console.log("フルスクリーン終了");
 
             }
