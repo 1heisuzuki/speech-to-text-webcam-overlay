@@ -565,9 +565,15 @@
     }
 
     function updateLanguage() {
-        recognition.stop();
+        var flag_recognition_stopped = 0;
+        if(recognition){
+            recognition.stop();
+            flag_recognition_stopped = 1;
+        }
         lang = langs[select_language.selectedIndex][1][select_dialect.selectedIndex];
-        vr_function();
+        if(flag_recognition_stopped){
+            vr_function();   
+        }
     }
 
     // 結果の翻訳機能を追加
