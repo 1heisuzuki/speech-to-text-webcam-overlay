@@ -40,13 +40,10 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 参考: Google Docs ヘルプ / 音声で入力する https://support.google.com/docs/answer/4492226?hl=ja  
 
 ### 自動で翻訳したい
-- 現状実装されていません。
-- Google Apps ScriptのClass LanguageAppや，Google Cloud Translateなどを利用すれば実装できます。リクエスト数の制限があったり課金制だったりするので注意してください。  
-参考: https://developers.google.com/apps-script/reference/language/language-app  
-参考: https://cloud.google.com/translate
+- 実装しました。操作パネルの「翻訳：Select Language」と書かれているところから，翻訳したい言語を選択してください。
 
 ### 他の言語を認識したい
-- 実装しました。操作パネルで「Japanese」と書かれているところから，他の言語を選択してください。
+- 実装しました。操作パネルの「音声認識：Japanese」と書かれているところから，他の言語を選択してください。
 
 ## その他
 ### ブログや生配信で紹介したい
@@ -72,3 +69,5 @@ https://blog.katsubemakito.net/html5/fullscreen
 https://webparts.cman.jp/input/textarea/
 - JavaScript でファイル保存・開くダイアログを出して読み書きするまとめ  
 https://qiita.com/kerupani129/items/99fd7a768538fcd33420
+- JavaScriptからGoogle翻訳を使えるAPI試してみた【コード例付き】  
+https://pisuke-code.com/js-usage-of-google-trans-api/
