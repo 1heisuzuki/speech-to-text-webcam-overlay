@@ -15,7 +15,7 @@
     <meta name="twitter:card"       content="summary">
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?ver=202005231120" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="style.css?ver=202005231230" type="text/css" media="screen" charset="utf-8" />
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 
@@ -133,8 +133,14 @@
                     onclick="document.getElementById('bg_green').classList.toggle('hidden')">
                 <input type="button" value="全画面表示アイコン表示/非表示" 
                 onclick="document.getElementById('FullScreenBtn').classList.toggle('hidden')">
+            </div>
+
+            <div class="control_selector_wrapper">
+                音声認識：
                 <select id="select_language" onchange="updateCountry()"></select>
                 <select id="select_dialect"></select>
+                翻訳：
+                <div id="google_translate_element" class="select_translation"></div>
             </div>
         </div>
         <div class="log_wrapper">
@@ -554,10 +560,8 @@
     }
 
     function googleTranslateElementInit() {
-        console.log("ho")
         new google.translate.TranslateElement({ 
-                pageLanguage: 'ja',
-                layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
     }
 </script>

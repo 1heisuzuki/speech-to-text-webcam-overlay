@@ -243,14 +243,25 @@ input[type="button"] {
 	margin-right: 0.3rem;
 }
 
+.control_button_wrapper {
+	width: 100%;
+	margin-top: 0.2rem;
+	text-align: center;
+}
+
 select {
 	padding: 0.2rem 0.4rem;
 	vertical-align:middle;
 }
 
-.control_button_wrapper {
+.select_translation,
+.goog-te-gadget {
+	display: inline;
+}
+
+.control_selector_wrapper {
 	width: 100%;
-	margin-top: 0.2rem;
+	margin-top: 1rem;
 	text-align: center;
 }
 
