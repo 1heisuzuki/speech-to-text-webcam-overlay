@@ -378,6 +378,10 @@
     
     const FullScreenBtn = document.querySelector("#FullScreenBtn");   // フルスクリーン化ボタン
 
+    const objResultText = document.querySelector("#result_text");
+    var font_size_windowed = parseFloat(getComputedStyle(objResultText).getPropertyValue('font-size'));
+    var flag_font_size_styled = 0;
+
     window.onload = () => {
         vr_function();
         const video_doc = document.querySelector("#video_wrapper");      // フルスクリーンにするオブジェクト
@@ -409,13 +413,24 @@
             if (getFullScreenObject()) {
                 // フルスクリーン時に文字と画面の比率を維持
                 const ratio = window.parent.screen.height / document.querySelector("#result_video").clientHeight 
-                document.querySelector('#result_text').style.fontSize =  Number(document.querySelector("#value_font_size").textContent) * ratio  +'px';
+                font_size_windowed = parseFloat(getComputedStyle(objResultText).getPropertyValue('font-size'));
+                if(objResultText.style.fontSize){
+                    // スライダーでフォントサイズの指定がされているかどうかを記録
+                    flag_font_size_styled = 1;
+                    font_size_windowed = parseFloat(getComputedStyle(objResultText).fontSize);
+                }
+                document.querySelector('#result_text').style.fontSize = parseFloat(getComputedStyle(objResultText).getPropertyValue('font-size')) * ratio  +'px';
                 console.log("フルスクリーン開始");
                 
-            }
-            else {
+            } else {
                 // フルスクリーン時から通常画面に戻るときに文字と画面の比率を維持
-                document.querySelector('#result_text').style.fontSize = document.querySelector("#value_font_size").textContent+'px';
+                if(flag_font_size_styled){
+                    document.querySelector('#result_text').style.fontSize = document.querySelector("#value_font_size").textContent+'px';
+                }else{
+                    // スライダーでフォントサイズの指定がされていなかった（デフォルトだった）場合は単にstyleのfontSizeを削除する
+                    // 分割表示時のデフォルトCSSを活かすため
+                    document.querySelector('#result_text').style.fontSize = '';
+                }
                 console.log("フルスクリーン終了");
 
             }
