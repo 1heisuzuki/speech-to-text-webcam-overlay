@@ -15,7 +15,7 @@
     <meta name="twitter:card"       content="summary">
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?ver=202005231230" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="style.css?ver=202005231250" type="text/css" media="screen" charset="utf-8" />
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 
@@ -32,6 +32,8 @@
             <!-- <input type="button" id="FullScreenBtn" class="FullScreenBtn" value="全画面"> -->
             <img src="fullscreen.png" id="FullScreenBtn" class="FullScreenBtn" width="32" height="32" style="display:block">
         </div>
+
+        <div class="help_text log_link_description"><a href="#log">認識結果のログ表示/ダウンロード</a></div>
 
         <div id="help_on_error" class="help_on_error">
             カメラやマイクが機能しないとき → ページの再読み込みや，ブラウザの設定を確認してください: <a
@@ -143,7 +145,7 @@
                 <div id="google_translate_element" class="select_translation"></div>
             </div>
         </div>
-        <div class="log_wrapper">
+        <div id="log" class="log_wrapper">
             認識結果のログ
             <div class="help_text">
                 *認識結果が確定したタイミングで反映されます。テキストの編集・コピーも可能です。<br/>

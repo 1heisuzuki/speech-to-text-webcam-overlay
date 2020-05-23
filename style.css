@@ -25,7 +25,7 @@ a:link, a:visited, a:hover, a:active {
 	position: relative;
 	width: 960px;
 	height: 540px;
-	margin-bottom: 1rem;
+	margin-bottom: 0.5rem;
 	transition: all 0.3s;
 }
 
@@ -304,4 +304,10 @@ select {
 	font-size: 85%;
 	line-height: 145%;
 	margin-bottom: 0.5rem;
+}
+
+.log_link_description { 
+	width: 100%;
+	font-size: 70%;
+	text-align: right;
 }
