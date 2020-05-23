@@ -552,13 +552,9 @@
     }
 
     function updateLanguage() {
-        if(flag_speech == 1){
-            recognition.stop();
-        }
+        recognition.stop();
         lang = langs[select_language.selectedIndex][1][select_dialect.selectedIndex];
-        // if (flag_speech == 0) {
-        //     vr_function();
-        // }
+        vr_function();
     }
 
     // 結果の翻訳機能を追加
