@@ -546,7 +546,9 @@
             recognition.stop();
         }
         lang = langs[select_language.selectedIndex][1][select_dialect.selectedIndex];
-        console.log(lang)
+        if (flag_speech == 0) {
+            vr_function();
+        }
     }
 </script>
 
