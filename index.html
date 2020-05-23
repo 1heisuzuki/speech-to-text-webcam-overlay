@@ -15,7 +15,7 @@
     <meta name="twitter:card"       content="summary">
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?ver=202005221440" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="style.css?ver=202005231120" type="text/css" media="screen" charset="utf-8" />
 </head>
 
 <body>
@@ -132,13 +132,15 @@
                     onclick="document.getElementById('bg_green').classList.toggle('hidden')">
                 <input type="button" value="全画面表示アイコン表示/非表示" 
                 onclick="document.getElementById('FullScreenBtn').classList.toggle('hidden')">
+                <select id="select_language" onchange="updateCountry()"></select>
+                <select id="select_dialect"></select>
             </div>
         </div>
         <div class="log_wrapper">
             認識結果のログ
             <div class="help_text">
                 *認識結果が確定したタイミングで反映されます。テキストの編集・コピーも可能です。<br/>
-                **認識中にEnterキーを押すと，認識を止めて文を区切ることができます。文末には句点が付与されます。</span>
+                **認識中にEnterキーを押すと，認識を止めて文を区切ることができます。日本語の場合は文末に句点が付与されます。</span>
             </div>
             <textarea id="result_log" class="result_log_area" onchange="textAreaHeightSet(this)"></textarea><br/>
             <div style="text-align: center; opacity: 0.6;">
@@ -149,7 +151,7 @@
             <div class="help_text">
                 よくある質問・ソースコード: <a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay" target="_blank">GitHub</a><br />
                 音声認識は <a href="https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API" target="_blank">Web Speech
-                    API</a> を利用し，日本語の音声を認識する設定になっています。<br />
+                    API</a> を利用しています。<br />
                 カメラやマイクが機能しないとき → ページの再読み込みや，ブラウザの設定を確認してください: <a
                         href="https://support.google.com/chrome/answer/2693767?co=GENIE.Platform%3DDesktop&hl=ja&oco=1"
                         target="_blank">Chrome ヘルプ</a><br />
@@ -210,13 +212,13 @@
     // 音声認識
     // 参考: https://jellyware.jp/kurage/iot/webspeechapi.html
     var flag_speech = 0;
-
     var recognition;
+    var lang = 'ja-JP';
 
     function vr_function() {
         window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
         recognition = new webkitSpeechRecognition();
-        recognition.lang = 'ja';
+        recognition.lang = lang;
         recognition.interimResults = true;
         recognition.continuous = true;
 
@@ -244,9 +246,12 @@
             var results = event.results;
             for (var i = event.resultIndex; i < results.length; i++) {
                 if (results[i].isFinal) {
-                    const resutt_transcript = results[i][0].transcript+'。'
-                    document.getElementById('result_text').innerHTML = resutt_transcript;
-                    document.getElementById('result_log').insertAdjacentHTML('beforeend', resutt_transcript+'\n');
+                    var result_transcript = results[i][0].transcript
+                    if (lang == 'ja-JP') {
+                        result_transcript += '。';
+                    }
+                    document.getElementById('result_text').innerHTML = result_transcript;
+                    document.getElementById('result_log').insertAdjacentHTML('beforeend', result_transcript+'\n');
                     textAreaHeightSet(document.getElementById('result_log'));
                     vr_function();
                     flag_speech = 0;
@@ -408,6 +413,141 @@
             }
         });
     };
+
+
+    // 言語切替
+    // 参考: https://www.google.com/intl/ja/chrome/demos/speech.html
+    var langs =
+        [['Japanese',       ['ja-JP']],
+        ['English',         ['en-US', 'United States'],
+                            ['en-AU', 'Australia'],
+                            ['en-CA', 'Canada'],
+                            ['en-IN', 'India'],
+                            ['en-KE', 'Kenya'],
+                            ['en-TZ', 'Tanzania'],
+                            ['en-GH', 'Ghana'],
+                            ['en-NZ', 'New Zealand'],
+                            ['en-NG', 'Nigeria'],
+                            ['en-ZA', 'South Africa'],
+                            ['en-PH', 'Philippines'],
+                            ['en-GB', 'United Kingdom'],],
+        ['Afrikaans',       ['af-ZA']],
+        ['አማርኛ',           ['am-ET']],
+        ['Azərbaycanca',    ['az-AZ']],
+        ['বাংলা',            ['bn-BD', 'বাংলাদেশ'],
+                            ['bn-IN', 'ভারত']],
+        ['Bahasa Indonesia',['id-ID']],
+        ['Bahasa Melayu',   ['ms-MY']],
+        ['Català',          ['ca-ES']],
+        ['Čeština',         ['cs-CZ']],
+        ['Dansk',           ['da-DK']],
+        ['Deutsch',         ['de-DE']],
+        ['Español',         ['es-AR', 'Argentina'],
+                            ['es-BO', 'Bolivia'],
+                            ['es-CL', 'Chile'],
+                            ['es-CO', 'Colombia'],
+                            ['es-CR', 'Costa Rica'],
+                            ['es-EC', 'Ecuador'],
+                            ['es-SV', 'El Salvador'],
+                            ['es-ES', 'España'],
+                            ['es-US', 'Estados Unidos'],
+                            ['es-GT', 'Guatemala'],
+                            ['es-HN', 'Honduras'],
+                            ['es-MX', 'México'],
+                            ['es-NI', 'Nicaragua'],
+                            ['es-PA', 'Panamá'],
+                            ['es-PY', 'Paraguay'],
+                            ['es-PE', 'Perú'],
+                            ['es-PR', 'Puerto Rico'],
+                            ['es-DO', 'República Dominicana'],
+                            ['es-UY', 'Uruguay'],
+                            ['es-VE', 'Venezuela']],
+        ['Euskara',         ['eu-ES']],
+        ['Filipino',        ['fil-PH']],
+        ['Français',        ['fr-FR']],
+        ['Basa Jawa',       ['jv-ID']],
+        ['Galego',          ['gl-ES']],
+        ['ગુજરાતી',           ['gu-IN']],
+        ['Hrvatski',        ['hr-HR']],
+        ['IsiZulu',         ['zu-ZA']],
+        ['Íslenska',        ['is-IS']],
+        ['Italiano',        ['it-IT', 'Italia'],
+                            ['it-CH', 'Svizzera']],
+        ['ಕನ್ನಡ',             ['kn-IN']],
+        ['ភាសាខ្មែរ',          ['km-KH']],
+        ['Latviešu',        ['lv-LV']],
+        ['Lietuvių',        ['lt-LT']],
+        ['മലയാളം',          ['ml-IN']],
+        ['मराठी',             ['mr-IN']],
+        ['Magyar',          ['hu-HU']],
+        ['ລາວ',              ['lo-LA']],
+        ['Nederlands',      ['nl-NL']],
+        ['नेपाली भाषा',        ['ne-NP']],
+        ['Norsk bokmål',    ['nb-NO']],
+        ['Polski',          ['pl-PL']],
+        ['Português',       ['pt-BR', 'Brasil'],
+                            ['pt-PT', 'Portugal']],
+        ['Română',          ['ro-RO']],
+        ['සිංහල',          ['si-LK']],
+        ['Slovenščina',     ['sl-SI']],
+        ['Basa Sunda',      ['su-ID']],
+        ['Slovenčina',      ['sk-SK']],
+        ['Suomi',           ['fi-FI']],
+        ['Svenska',         ['sv-SE']],
+        ['Kiswahili',       ['sw-TZ', 'Tanzania'],
+                            ['sw-KE', 'Kenya']],
+        ['ქართული',       ['ka-GE']],
+        ['Հայերեն',          ['hy-AM']],
+        ['தமிழ்',            ['ta-IN', 'இந்தியா'],
+                            ['ta-SG', 'சிங்கப்பூர்'],
+                            ['ta-LK', 'இலங்கை'],
+                            ['ta-MY', 'மலேசியா']],
+        ['తెలుగు',           ['te-IN']],
+        ['Tiếng Việt',      ['vi-VN']],
+        ['Türkçe',          ['tr-TR']],
+        ['اُردُو',            ['ur-PK', 'پاکستان'],
+                            ['ur-IN', 'بھارت']],
+        ['Ελληνικά',         ['el-GR']],
+        ['български',         ['bg-BG']],
+        ['Pусский',          ['ru-RU']],
+        ['Српски',           ['sr-RS']],
+        ['Українська',        ['uk-UA']],
+        ['한국어',            ['ko-KR']],
+        ['中文',             ['cmn-Hans-CN', '普通话 (中国大陆)'],
+                            ['cmn-Hans-HK', '普通话 (香港)'],
+                            ['cmn-Hant-TW', '中文 (台灣)'],
+                            ['yue-Hant-HK', '粵語 (香港)']],
+        ['हिन्दी',             ['hi-IN']],
+        ['ภาษาไทย',         ['th-TH']]];
+
+    for (var i = 0; i < langs.length; i++) {
+        select_language.options[i] = new Option(langs[i][0], i);
+    }
+    
+    // デフォルトの言語を設定
+    select_language.selectedIndex = 0;
+    updateCountry();
+    select_dialect.selectedIndex = 0;
+
+    function updateCountry() {
+        for (var i = select_dialect.options.length - 1; i >= 0; i--) {
+            select_dialect.remove(i);
+        }
+        var list = langs[select_language.selectedIndex];
+        for (var i = 1; i < list.length; i++) {
+            select_dialect.options.add(new Option(list[i][1], list[i][0]));
+        }
+        select_dialect.style.visibility = list[1].length == 1 ? 'hidden' : 'visible';
+        updateLanguage()
+    }
+
+    function updateLanguage() {
+        if(flag_speech == 1){
+            recognition.stop();
+        }
+        lang = langs[select_language.selectedIndex][1][select_dialect.selectedIndex];
+        console.log(lang)
+    }
 </script>
 
 </html>

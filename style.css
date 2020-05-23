@@ -243,6 +243,11 @@ input[type="button"] {
 	margin-right: 0.3rem;
 }
 
+select {
+	padding: 0.2rem 0.4rem;
+	vertical-align:middle;
+}
+
 .control_button_wrapper {
 	width: 100%;
 	margin-top: 0.2rem;
@@ -286,6 +291,6 @@ input[type="button"] {
 
 .help_text {
 	font-size: 85%;
-	line-height: 125%;
+	line-height: 145%;
 	margin-bottom: 0.5rem;
 }
