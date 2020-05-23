@@ -552,9 +552,7 @@
     }
 
     function updateLanguage() {
-        if(recognition){
-            recognition.stop();
-        }
+        recognition.stop();
         lang = langs[select_language.selectedIndex][1][select_dialect.selectedIndex];
         vr_function();
     }
