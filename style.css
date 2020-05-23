@@ -104,7 +104,7 @@ a:link, a:visited, a:hover, a:active {
 	font-family: 'Noto Sans JP', sans-serif;
 	font-size: 68px;
 	font-weight: 500;
-	letter-spacing: 0.2rem;
+	letter-spacing: 0.05em;
 	line-height: 165%;
 	color: #fff;
 	text-shadow:0 0 5px #000;
