@@ -122,6 +122,11 @@
                             <span id="value_text_stroke">0.3</span><span class="value_unit">px</span>
                         </div>
                     </div>
+
+                    <div class="control_form control_form_selector col-3">
+                        <label for="slider_text_stroke" class="control_label">フォント: </label>
+                        <select id="select_font" onchange="document.getElementById('result_text').style.fontFamily=fonts_custom[select_font.selectedIndex][1]" style="width: 94%"></select>
+                    </div>
                 </div>
             </div>
 
@@ -614,6 +619,23 @@
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
     }
+
+    // フォント切替
+    // 参考: https://www.google.com/intl/ja/chrome/demos/speech.html
+    var fonts_custom =
+        [['Noto Sans JP',     "'Noto Sans JP', sans-serif"],
+        ['游ゴシック', "游ゴシック体, 'Yu Gothic', YuGothic, sans-serif"],
+        ['メイリオ', "'メイリオ', 'Meiryo', sans-serif"],
+        ['ゴシック体（PC標準）', "sans-serif"],
+        ['明朝体（PC標準）',    "serif"]];
+
+    for (var i = 0; i < fonts_custom.length; i++) {
+        select_font.options[i] = new Option(fonts_custom[i][0], i);
+    }
+    
+    // デフォルトの言語を設定
+    select_font.selectedIndex = 0;
+
 </script>
 
 </html>

@@ -265,8 +265,13 @@ a:link, a:visited, a:hover, a:active {
 	grid-template-columns: 55px 120px 1fr;
 }
 
+.control_form_selector {
+	grid-template-columns: 80px 1fr;
+}
+
 .control_form_slider .control_label,
-.control_form_color .control_label {
+.control_form_color .control_label,
+.control_form_selector .control_label {
 	grid-column: 1 / 2;
 	line-height: 230%;
 	text-align: right;
