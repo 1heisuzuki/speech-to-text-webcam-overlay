@@ -15,7 +15,7 @@
     <meta name="twitter:card"       content="summary">
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?ver=202005240935" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="style.css?ver=202005241210" type="text/css" media="screen" charset="utf-8" />
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 
@@ -27,9 +27,10 @@
             <video id="result_video" class="video_area" autoplay></video>
             <div id="bg_color" class="bg_color hidden"></div>
             <div id="text_overlay_wrapper" class="text_overlay_wrapper full">
+                <div id="text_bg" class="text_bg"></div>
                 <div id="result_text" class="text_area">音声認識が始まるとここに文字が表示されます。マイクとカメラを有効にしてください。</div>
             </div>
-            <!-- <input type="button" id="FullScreenBtn" class="FullScreenBtn" value="全画面"> -->
+            <!-- <input type="button" id="FullScreenBtn" class="FullScreenBtn" value="全画面"> -->≈
             <img src="fullscreen.png" id="FullScreenBtn" class="FullScreenBtn" width="18" height="18" style="display:block">
         </div>
 
@@ -120,11 +121,11 @@
             </div>
 
             <div class="control_form control_form_slider">
-                <label for="slider_opacity_bg" class="control_label">背景</label>
-                <input id="slider_opacity_bg" type="range" class="control_input" value="0.3" min="0" max="1" step="0.05"
-                    oninput="document.getElementById('text_overlay_wrapper').style.backgroundColor='rgba(0,0,0,'+this.value+')',document.getElementById('value_opacity_bg').innerHTML=this.value">
+                <label for="slider_text_bg_opacity" class="control_label">背景</label>
+                <input id="slider_text_bg_opacity" type="range" class="control_input" value="0.3" min="0" max="1" step="0.05"
+                    oninput="document.getElementById('text_bg').style.opacity=this.value,document.getElementById('value_text_bg_opacity').innerHTML=this.value">
                 <div class="control_value">
-                    <span id="value_opacity_bg">0.3</span>
+                    <span id="value_text_bg_opacity">0.3</span>
                 </div>
             </div>
 

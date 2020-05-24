@@ -66,7 +66,6 @@ a:link, a:visited, a:hover, a:active {
 	left: 10%;
 	right: 10%;
 	bottom: 10%;
-	background-color: rgba(0,0,0,0) !important;
 }
 
 .text_overlay_wrapper.split {
@@ -74,7 +73,6 @@ a:link, a:visited, a:hover, a:active {
     height: 100%;
 	top: 0%;
 	left: 0%;
-	background-color: rgba(0,0,0,0.3);
 }
 
 .text_overlay_wrapper.left{
@@ -93,6 +91,28 @@ a:link, a:visited, a:hover, a:active {
 .text_overlay_wrapper.bottom{
 	height: 30%;
 	top: 70%;
+}
+
+.text_bg {
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: 0;
+	transition: all 0.5s;
+}
+
+.text_overlay_wrapper.full
+ .text_bg {
+	opacity: 0 !important;
+}
+
+.text_overlay_wrapper.split
+ .text_bg {
+	opacity: 0.3;
 }
 
 .text_area{
