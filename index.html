@@ -15,7 +15,7 @@
     <meta name="twitter:card"       content="summary">
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?ver=202005241210" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="style.css?ver=202005241330" type="text/css" media="screen" charset="utf-8" />
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 
@@ -30,7 +30,7 @@
                 <div id="text_bg" class="text_bg"></div>
                 <div id="result_text" class="text_area">音声認識が始まるとここに文字が表示されます。マイクとカメラを有効にしてください。</div>
             </div>
-            <!-- <input type="button" id="FullScreenBtn" class="FullScreenBtn" value="全画面"> -->≈
+            <!-- <input type="button" id="FullScreenBtn" class="FullScreenBtn" value="全画面"> -->
             <img src="fullscreen.png" id="FullScreenBtn" class="FullScreenBtn" width="18" height="18" style="display:block">
         </div>
 
@@ -42,104 +42,128 @@
             target="_blank">Chrome ヘルプ</a>
         </div>
 
-        <div class="control_wrapper">
-            <div class="control_form control_form_slider">
-                <label for="slider_font_size" class="control_label">大きさ</label>
-                <input id="slider_font_size" type="range" class="control_input" value="68" min="1" max="150" step="1"
-                    oninput="document.getElementById('result_text').style.fontSize=this.value+'px',document.getElementById('value_font_size').innerHTML=this.value">
-                <div class="control_value">
-                    <span id="value_font_size">68</span><span class="value_unit">px</span>
+        <div class="controls_wrapper control_wrapper_row">
+            <div class="col-12 control_wrapper_col">
+                <div class="control_header">文字の調整</div>
+                <div class="control_wrapper">
+                    <div class="control_form control_form_slider col-3">
+                        <label for="slider_font_size" class="control_label">大きさ</label>
+                        <input id="slider_font_size" type="range" class="control_input" value="68" min="1" max="150" step="1"
+                            oninput="document.getElementById('result_text').style.fontSize=this.value+'px',document.getElementById('value_font_size').innerHTML=this.value">
+                        <div class="control_value">
+                            <span id="value_font_size">68</span><span class="value_unit">px</span>
+                        </div>
+                    </div>
+
+                    <div class="control_form control_form_slider col-3">
+                        <label for="slider_opacity" class="control_label">濃さ</label>
+                        <input id="slider_opacity" type="range" class="control_input" value="0.9" min="0" max="1" step="0.05"
+                            oninput="document.getElementById('result_text').style.opacity=this.value,document.getElementById('value_opacity').innerHTML=this.value">
+                        <div class="control_value">
+                            <span id="value_opacity">0.9</span>
+                        </div>
+                    </div>
+
+                    <div class="control_form control_form_color col-2">
+                        <label for="selector_font_color" class="control_label">文字色</label>
+                        <input id="selector_font_color" type="color" class="control_input" value="#ffffff"
+                            oninput="document.getElementById('result_text').style.color=this.value">
+                    </div>
+
+                    <div class="control_form control_form_radio col-4">
+                        <label for="selector_position" class="control_label">位置</label>
+                        <div class="control_input">
+                            <label for="selector_position_full">
+                            <input id="selector_position_full" type="radio" name='selector_position'
+                                oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper full'" checked> 全体
+                            </label>
+                            <label for="selector_position_left">
+                            <input id="selector_position_left" type="radio" name='selector_position'
+                                oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper split left'"> 左
+                            </label>
+                            <label for="selector_position_right">
+                            <input id="selector_position_right" type="radio"  name='selector_position'
+                                oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper split right'"> 右
+                            </label>
+                            <label for="selector_position_top">
+                            <input id="selector_position_top" type="radio" name='selector_position'
+                                oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper split top'"> 上
+                            </label>
+                            <label for="selector_position_bottom">
+                            <input id="selector_position_bottom" type="radio" name='selector_position'
+                                oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper split bottom'"> 下
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="control_form control_form_slider col-3">
+                        <label for="slider_line_height" class="control_label">行間</label>
+                        <input id="slider_line_height" type="range" class="control_input" value="165" min="100" max="300" step="1"
+                            oninput="document.getElementById('result_text').style.lineHeight=this.value+'%',document.getElementById('value_line_height').innerHTML=this.value">
+                        <div class="control_value">
+                            <span id="value_line_height">165</span><span class="value_unit">%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control_form control_form_slider col-3">
+                        <label for="slider_letter_spacing" class="control_label">字間</label>
+                        <input id="slider_letter_spacing" type="range" class="control_input" value="0.05" min="0" max="1" step="0.01"
+                            oninput="document.getElementById('result_text').style.letterSpacing=this.value+'em',document.getElementById('value_letter_spacing').innerHTML=this.value">
+                        <div class="control_value">
+                            <span id="value_letter_spacing">0.05</span>
+                        </div>
+                    </div>
+
+                    <div class="control_form control_form_slider col-3">
+                        <label for="slider_text_stroke" class="control_label">フチ</label>
+                        <input id="slider_text_stroke" type="range" class="control_input" value="0.3" min="0" max="5" step="0.01"
+                            oninput="document.getElementById('result_text').style.webkitTextStrokeWidth=this.value+'px',document.getElementById('value_text_stroke').innerHTML=this.value">
+                        <div class="control_value">
+                            <span id="value_text_stroke">0.3</span><span class="value_unit">px</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="control_form control_form_slider">
-                <label for="slider_opacity" class="control_label">濃さ</label>
-                <input id="slider_opacity" type="range" class="control_input" value="0.9" min="0" max="1" step="0.05"
-                    oninput="document.getElementById('result_text').style.opacity=this.value,document.getElementById('value_opacity').innerHTML=this.value">
-                <div class="control_value">
-                    <span id="value_opacity">0.9</span>
+            <div class="col-6 control_wrapper_col">
+                <div class="control_header">文字背景の塗り調整</div>
+                <div class="control_wrapper">
+                    <div class="control_form control_form_slider col-6">
+                        <label for="slider_text_bg_opacity" class="control_label">濃さ</label>
+                        <input id="slider_text_bg_opacity" type="range" class="control_input" value="0.3" min="0" max="1" step="0.05"
+                            oninput="document.getElementById('text_bg').style.opacity=this.value,document.getElementById('value_text_bg_opacity').innerHTML=this.value">
+                        <div class="control_value">
+                            <span id="value_text_bg_opacity">0.3</span>
+                        </div>
+                    </div>
+
+                    <div class="control_form control_form_color col-6">
+                        <label for="selector_textbg_color" class="control_label">色</label>
+                        <input id="selector_text_bg_color" type="color" class="control_input" value="#000000"
+                            oninput="document.getElementById('text_bg').style.backgroundColor=this.value">
+                    </div>
                 </div>
             </div>
 
-            <div class="control_form control_form_radio">
-                <label for="selector_position" class="control_label">位置</label>
-                <div class="control_input">
-                    <label for="selector_position_full">
-                    <input id="selector_position_full" type="radio" name='selector_position'
-                        oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper full'" checked> 全体
-                    </label>
-                    <label for="selector_position_left">
-                    <input id="selector_position_left" type="radio" name='selector_position'
-                        oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper split left'"> 左
-                    </label>
-                    <label for="selector_position_right">
-                    <input id="selector_position_right" type="radio"  name='selector_position'
-                        oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper split right'"> 右
-                    </label>
-                    <label for="selector_position_top">
-                    <input id="selector_position_top" type="radio" name='selector_position'
-                        oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper split top'"> 上
-                    </label>
-                    <label for="selector_position_bottom">
-                    <input id="selector_position_bottom" type="radio" name='selector_position'
-                        oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper split bottom'"> 下
-                    </label>
-                </div>
-            </div>
-
-            <div class="control_form control_form_color">
-                <label for="selector_font_color" class="control_label">色</label>
-                <input id="selector_font_color" type="color" class="control_input" value="#ffffff"
-                    oninput="document.getElementById('result_text').style.color=this.value">
-            </div>
-
-            <div class="control_form control_form_slider">
-                <label for="slider_line_height" class="control_label">行間</label>
-                <input id="slider_line_height" type="range" class="control_input" value="165" min="100" max="300" step="1"
-                    oninput="document.getElementById('result_text').style.lineHeight=this.value+'%',document.getElementById('value_line_height').innerHTML=this.value">
-                <div class="control_value">
-                    <span id="value_line_height">165</span><span class="value_unit">%</span>
+            <div class="col-6 control_wrapper_col">
+                <div class="control_header">単色背景の調整</div>
+                <div class="control_wrapper">
+                    <div class="control_button_wrapper col-6">
+                        <input type="button" id="bg_color_toggle" class="" value="単色背景 表示/非表示"
+                            onclick="document.getElementById('bg_color').classList.toggle('hidden')">
+                    </div>
+                    <div class="control_form control_form_color col-5">
+                        <label for="selector_bg_color" class="control_label">背景色</label>
+                        <input id="selector_bg_color" type="color" class="control_input" value="#00ff00"
+                            oninput="document.getElementById('bg_color').style.backgroundColor=this.value">
+                    </div>                    
                 </div>
             </div>
             
-            <div class="control_form control_form_slider">
-                <label for="slider_letter_spacing" class="control_label">字間</label>
-                <input id="slider_letter_spacing" type="range" class="control_input" value="0.05" min="0" max="1" step="0.01"
-                    oninput="document.getElementById('result_text').style.letterSpacing=this.value+'em',document.getElementById('value_letter_spacing').innerHTML=this.value">
-                <div class="control_value">
-                    <span id="value_letter_spacing">0.05</span>
-                </div>
-            </div>
-
-            <div class="control_form control_form_slider">
-                <label for="slider_text_stroke" class="control_label">フチ</label>
-                <input id="slider_text_stroke" type="range" class="control_input" value="0.3" min="0" max="5" step="0.01"
-                    oninput="document.getElementById('result_text').style.webkitTextStrokeWidth=this.value+'px',document.getElementById('value_text_stroke').innerHTML=this.value">
-                <div class="control_value">
-                    <span id="value_text_stroke">0.3</span><span class="value_unit">px</span>
-                </div>
-            </div>
-
-            <div class="control_form control_form_slider">
-                <label for="slider_text_bg_opacity" class="control_label">背景</label>
-                <input id="slider_text_bg_opacity" type="range" class="control_input" value="0.3" min="0" max="1" step="0.05"
-                    oninput="document.getElementById('text_bg').style.opacity=this.value,document.getElementById('value_text_bg_opacity').innerHTML=this.value">
-                <div class="control_value">
-                    <span id="value_text_bg_opacity">0.3</span>
-                </div>
-            </div>
-
-            <div class="control_form control_form_color">
-                <label for="selector_bg_color" class="control_label">背景</label>
-                <input id="selector_bg_color" type="color" class="control_input" value="#00ff00"
-                    oninput="document.getElementById('bg_color').style.backgroundColor=this.value">
-            </div>
-
             <div class="control_button_wrapper">
                 <input type="button" value="カメラ 表示/非表示"
                     onclick="document.getElementById('result_video').classList.toggle('hidden')">
-                <input type="button" id="bg_color_toggle" value="単色背景 表示/非表示"
-                    onclick="document.getElementById('bg_color').classList.toggle('hidden')">
+                
                 <input type="button" value="全画面化ボタン 表示/非表示" 
                 onclick="document.getElementById('FullScreenBtn').classList.toggle('hidden')">
             </div>
