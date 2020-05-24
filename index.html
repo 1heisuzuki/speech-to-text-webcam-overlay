@@ -15,7 +15,7 @@
     <meta name="twitter:card"       content="summary">
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?ver=202005232350" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="style.css?ver=202005240935" type="text/css" media="screen" charset="utf-8" />
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 
@@ -25,7 +25,7 @@
         
         <div id="video_wrapper" class="video_wrapper">
             <video id="result_video" class="video_area" autoplay></video>
-            <div id="bg_green" class="bg_green hidden"></div>
+            <div id="bg_color" class="bg_color hidden"></div>
             <div id="text_overlay_wrapper" class="text_overlay_wrapper full">
                 <div id="result_text" class="text_area">音声認識が始まるとここに文字が表示されます。マイクとカメラを有効にしてください。</div>
             </div>
@@ -128,11 +128,17 @@
                 </div>
             </div>
 
+            <div class="control_form control_form_color">
+                <label for="selector_bg_color" class="control_label">背景</label>
+                <input id="selector_bg_color" type="color" class="control_input" value="#00ff00"
+                    oninput="document.getElementById('bg_color').style.backgroundColor=this.value">
+            </div>
+
             <div class="control_button_wrapper">
                 <input type="button" value="カメラ 表示/非表示"
                     onclick="document.getElementById('result_video').classList.toggle('hidden')">
-                <input type="button" id="bg_green_toggle" value="単色背景 表示/非表示"
-                    onclick="document.getElementById('bg_green').classList.toggle('hidden')">
+                <input type="button" id="bg_color_toggle" value="単色背景 表示/非表示"
+                    onclick="document.getElementById('bg_color').classList.toggle('hidden')">
                 <input type="button" value="全画面化ボタン 表示/非表示" 
                 onclick="document.getElementById('FullScreenBtn').classList.toggle('hidden')">
             </div>
