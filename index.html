@@ -25,7 +25,7 @@
         
         <div id="video_wrapper" class="video_wrapper">
             <video id="result_video" class="video_area" autoplay></video>
-            <div id="bg_color" class="bg_color hidden"></div>
+            <div id="video_bg" class="video_bg hidden"></div>
             <div id="text_overlay_wrapper" class="text_overlay_wrapper full">
                 <div id="text_bg" class="text_bg"></div>
                 <div id="result_text" class="text_area">音声認識が始まるとここに文字が表示されます。マイクとカメラを有効にしてください。</div>
@@ -138,7 +138,7 @@
                     </div>
 
                     <div class="control_form control_form_color col-6">
-                        <label for="selector_textbg_color" class="control_label">色</label>
+                        <label for="selector_text_bg_color" class="control_label">色</label>
                         <input id="selector_text_bg_color" type="color" class="control_input" value="#000000"
                             oninput="document.getElementById('text_bg').style.backgroundColor=this.value">
                     </div>
@@ -149,13 +149,13 @@
                 <div class="control_header">単色背景の調整</div>
                 <div class="control_wrapper">
                     <div class="control_button_wrapper col-6">
-                        <input type="button" id="bg_color_toggle" class="" value="単色背景 表示/非表示"
-                            onclick="document.getElementById('bg_color').classList.toggle('hidden')">
+                        <input type="button" id="video_bg_toggle" class="" value="単色背景 表示/非表示"
+                            onclick="document.getElementById('video_bg').classList.toggle('hidden')">
                     </div>
                     <div class="control_form control_form_color col-5">
-                        <label for="selector_bg_color" class="control_label">背景色</label>
-                        <input id="selector_bg_color" type="color" class="control_input" value="#00ff00"
-                            oninput="document.getElementById('bg_color').style.backgroundColor=this.value">
+                        <label for="selector_video_bg" class="control_label">背景色</label>
+                        <input id="selector_video_bg" type="color" class="control_input" value="#00ff00"
+                            oninput="document.getElementById('video_bg').style.backgroundColor=this.value">
                     </div>                    
                 </div>
             </div>
