@@ -125,7 +125,7 @@ a:link, a:visited, a:hover, a:active {
 	font-size: 68px;
 	font-weight: 500;
 	letter-spacing: 0.05em;
-	line-height: 165%;
+	line-height: 163%;
 	color: #fff;
 	text-shadow:0 0 5px #000;
 	-webkit-text-stroke-width: 0.3px;
@@ -266,7 +266,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .control_form_selector {
-	grid-template-columns: 80px 1fr;
+	grid-template-columns: 77px 1fr;
 }
 
 .control_form_slider .control_label,
