@@ -192,6 +192,9 @@
                 
                 <input type="button" value="全画面化ボタン 表示/非表示" 
                 onclick="toggleHidden('FullScreenBtn')">
+
+                <input type="button" value="設定の初期化" 
+                onclick="deleteConfig()">
             </div>
 
             <div class="control_selector_wrapper">
@@ -737,6 +740,10 @@
         updateConfig(this.id, this.value);
     }
 
+    function deleteConfig() {
+        localStorage.removeItem('speech_to_text_config');
+        location.reload();
+    }
 </script>
 
 </html>
