@@ -176,22 +176,22 @@
                 <div class="control_wrapper">
                     <div class="control_button_wrapper col-6">
                         <input type="button" id="video_bg_toggle" class="" value="単色背景 表示/非表示"
-                            onclick="document.getElementById('video_bg').classList.toggle('hidden')">
+                            onclick="toggleHidden('video_bg')">
                     </div>
                     <div class="control_form control_form_color col-5">
                         <label for="selector_video_bg" class="control_label">背景色</label>
                         <input id="selector_video_bg" type="color" class="control_input" value="#00ff00"
                             oninput="document.getElementById('video_bg').style.backgroundColor=this.value">
-                    </div>                    
+                    </div>
                 </div>
             </div>
             
             <div class="control_button_wrapper">
                 <input type="button" value="カメラ 表示/非表示"
-                    onclick="document.getElementById('result_video').classList.toggle('hidden')">
+                    onclick="toggleHidden('result_video')">
                 
                 <input type="button" value="全画面化ボタン 表示/非表示" 
-                onclick="document.getElementById('FullScreenBtn').classList.toggle('hidden')">
+                onclick="toggleHidden('FullScreenBtn')">
             </div>
 
             <div class="control_selector_wrapper">
@@ -492,6 +492,8 @@
 
             }
         });
+
+        initConfig();
     };
 
 
@@ -659,6 +661,81 @@
     
     // デフォルトの言語を設定
     select_font.selectedIndex = 0;
+
+    // 初期設定
+    const config = JSON.parse(localStorage.speech_to_text_config || '{}');
+
+    function initConfig() {
+        function triggerEvent(type, elem) {
+            const ev = document.createEvent('HTMLEvents');
+            ev.initEvent(type, true, true);
+            elem.dispatchEvent(ev);
+        }
+        ['slider_font_size',
+         'slider_opacity',
+         'slider_text_shadow_stroke',
+         'slider_text_stroke',
+         'slider_line_height',
+         'slider_letter_spacing',
+         'selector_text_color',
+         'selector_text_shadow_color',
+         'selector_text_stroke_color',
+         'slider_text_bg_opacity',
+         'selector_text_bg_color',
+         'selector_video_bg',
+        ].forEach(id => {
+            if (typeof config[id] !== 'undefined') {
+                const el = document.getElementById(id);
+                el.value = config[id];
+                triggerEvent('input', el);
+            }
+        });
+        ['video_bg',
+         'result_video',
+         'FullScreenBtn'
+        ].forEach(id => {
+            if (typeof config[id] !== 'undefined') {
+                const el = document.getElementById(id);
+                if (config[id]) {
+                    el.classList.add('hidden');
+                } else {
+                    el.classList.remove('hidden');
+                }
+            }
+        });
+        if (typeof config.position !== 'undefined') {
+            const el = document.getElementById(config.position);
+            el.checked = 'checked';
+            triggerEvent('input', el);
+        }
+        if (typeof config.select_font !== 'undefined') {
+            select_font.selectedIndex = config.select_font;
+            triggerEvent('change', select_font);
+        }
+
+        document.querySelectorAll('input.control_input').forEach(
+            el => el.addEventListener('input', updateConfigValue)
+        );
+        document.querySelectorAll('input[name="selector_position"]').forEach(
+            el => el.addEventListener('input', ev => updateConfig('position', el.id))
+        );
+        document.querySelector('#select_font').addEventListener('change', updateConfigValue);
+    }
+
+    function updateConfig(key, value) {
+        config[key] = value;
+        localStorage.speech_to_text_config = JSON.stringify(config);
+    }
+
+    function toggleHidden(id) {
+        const el = document.getElementById(id);
+        const hidden = el.classList.toggle('hidden');
+        updateConfig(id, hidden);
+    }
+
+    function updateConfigValue() {
+        updateConfig(this.id, this.value);
+    }
 
 </script>
 
