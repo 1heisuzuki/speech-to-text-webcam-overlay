@@ -15,9 +15,16 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 
 # よくある質問
 ## 使用環境関係
+### Google Chrome って何？どうやって使うの？
+- Google Chrome は Google が提供しているウェブブラウザ（ウェブページを表示するためのソフトウェア）です。
+- 下記ページからダウンロード・インストールすることで利用できます。
+ダウンロードページ: https://www.google.com/chrome/
+
 ### iPhoneやiPadのChromeで使えない
 - iOS (iPhoneやiPad)のChromeは，中身がSafariのWebKitで実装されているため，音声認識に利用している Web Speech API が現段階では利用できません。PC版のChromeでアクセスしてください。  
 参考: https://news.mynavi.jp/article/20190331-iphone_why/
+- iOSで文字起こしを検討したい場合は，iOSの音声入力をメモアプリで使用するなどの方法が考えられます。
+参考: https://time-space.kddi.com/mobile/20190110/2532
 
 ### カメラやマイクが認識されない
 - ページを再読み込みするか，ブラウザの設定を確認してください。  
@@ -25,9 +32,11 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 
 ## 機能について
 ### 相手側の音声を表示したい
-- マイクに相手側の声が物理的に入るようにする（ハウリング注意），PC内部で直接相手の音をブラウザに流し込むなどの方法があります。    
-参考: https://www.cg-method.com/entry/google-document-convert-voice-to-text/  
-参考: https://ghosthack.net/?p=5680
+- 機能として実装はしていませんが，例えば次のような方法があります。
+  - マイクに相手側の声が物理的に入るようにする（ハウリング注意）
+  - PC内部で直接相手の音をブラウザに流し込む  
+    参考: https://www.cg-method.com/entry/google-document-convert-voice-to-text/  
+    参考: https://ghosthack.net/?p=5680
 
 ### 文字の修正をしたい
 - 認識結果のログでは修正可能になっています。合成画面上での編集については未実装です。
