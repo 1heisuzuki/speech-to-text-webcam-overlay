@@ -176,7 +176,7 @@
                 <div class="control_wrapper">
                     <div class="control_button_wrapper col-6">
                         <input type="button" id="video_bg_toggle" class="" value="単色背景 表示/非表示"
-                            onclick="toggleHidden('video_bg')">
+                            onclick="toggleClass('video_bg','hidden')">
                     </div>
                     <div class="control_form control_form_color col-5">
                         <label for="selector_video_bg" class="control_label">背景色</label>
@@ -188,10 +188,10 @@
             
             <div class="control_button_wrapper">
                 <input type="button" value="カメラ 表示/非表示"
-                    onclick="toggleHidden('result_video')">
-                
+                    onclick="toggleClass('result_video','hidden')">
+
                 <input type="button" value="全画面化ボタン 表示/非表示" 
-                onclick="toggleHidden('FullScreenBtn')">
+                onclick="toggleClass('FullScreenBtn','hidden')">
 
                 <input type="button" value="設定の初期化" 
                 onclick="deleteConfig()">
@@ -700,9 +700,13 @@
             if (typeof config[id] !== 'undefined') {
                 const el = document.getElementById(id);
                 if (config[id]) {
-                    el.classList.add('hidden');
-                } else {
-                    el.classList.remove('hidden');
+                    Object.keys(config[id]).forEach(key => {
+                        if(config[id][key]){
+                            el.classList.add(key);
+                        }else{
+                            el.classList.remove(key);
+                        }
+                    });
                 }
             }
         });
@@ -730,10 +734,19 @@
         localStorage.speech_to_text_config = JSON.stringify(config);
     }
 
-    function toggleHidden(id) {
+    function updateConfigClass(key, value_key, value) {
+        if(config[key] == undefined){
+            config[key] = {};
+        }
+        config[key][value_key] = value;
+        console.log(config);
+        localStorage.speech_to_text_config = JSON.stringify(config);
+    }
+
+    function toggleClass(id, className) {
         const el = document.getElementById(id);
-        const hidden = el.classList.toggle('hidden');
-        updateConfig(id, hidden);
+        const value = el.classList.toggle(className);
+        updateConfigClass(id, className, value);
     }
 
     function updateConfigValue() {
