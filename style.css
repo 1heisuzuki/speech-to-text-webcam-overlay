@@ -185,7 +185,6 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .controls_wrapper {
-	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
 	margin-bottom: 1rem;
@@ -367,6 +366,7 @@ select {
 }
 
 .result_log_area {
+	box-sizing: border-box;
 	width: 960px;
 	background-color: #000;
 	font-family: 'Noto Sans JP', sans-serif;
