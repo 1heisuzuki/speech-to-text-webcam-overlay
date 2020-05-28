@@ -392,3 +392,7 @@ select {
 	font-size: 70%;
 	text-align: right;
 }
+
+.mirror {
+	transform: scale(-1, 1);
+}

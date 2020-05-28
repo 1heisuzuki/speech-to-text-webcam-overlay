@@ -190,6 +190,15 @@
                 <input type="button" value="カメラ 表示/非表示"
                     onclick="toggleClass('result_video','hidden')">
 
+                <input type="button" value="カメラ 左右反転"
+                    onclick="toggleClass('result_video','mirror')">
+
+                <input type="button" value="文字 表示/非表示"
+                    onclick="toggleClass('text_overlay_wrapper','hidden')">
+
+                <input type="button" value="文字 左右反転"
+                    onclick="toggleClass('text_overlay_wrapper','mirror')">
+                
                 <input type="button" value="全画面化ボタン 表示/非表示" 
                 onclick="toggleClass('FullScreenBtn','hidden')">
 
@@ -695,6 +704,7 @@
         });
         ['video_bg',
          'result_video',
+         'text_overlay_wrapper',
          'FullScreenBtn'
         ].forEach(id => {
             if (typeof config[id] !== 'undefined') {
