@@ -37,13 +37,13 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 ## 使用環境関係
 ### Google Chrome って何？どうやって使うの？
 - Google Chrome は Google が提供しているウェブブラウザ（ウェブページを表示するためのソフトウェア）です。
-- 下記ページからダウンロード・インストールすることで利用できます。
-ダウンロードページ: https://www.google.com/chrome/
+- 下記ページからダウンロード・インストールすることで利用できます。  
+Google Chrome ダウンロードページ: https://www.google.com/chrome/
 
 ### iPhoneやiPadのChromeで使えない
 - iOS (iPhoneやiPad)のChromeは，中身がSafariのWebKitで実装されているため，音声認識に利用している Web Speech API が現段階では利用できません。PC版のChromeでアクセスしてください。  
 参考: https://news.mynavi.jp/article/20190331-iphone_why/
-- iOSで文字起こしを検討したい場合は，iOSの音声入力をメモアプリで使用するなどの方法が考えられます。
+- iOSで文字起こしを検討したい場合は，iOSの音声入力をメモアプリで使用するなどの方法が考えられます。  
 参考: https://time-space.kddi.com/mobile/20190110/2532
 
 ### カメラやマイクが認識されない
