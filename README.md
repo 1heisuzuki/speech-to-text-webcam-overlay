@@ -131,3 +131,5 @@ https://webparts.cman.jp/input/textarea/
 https://qiita.com/kerupani129/items/99fd7a768538fcd33420
 - JavaScriptからGoogle翻訳を使えるAPI試してみた【コード例付き】  
 https://pisuke-code.com/js-usage-of-google-trans-api/
+- しりとり審判アプリを作った話
+https://medium.com/@Mitu217/しりとり審判アプリを作った話-294b4947b008
