@@ -15,13 +15,15 @@
     <meta name="twitter:card"       content="summary">
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?ver=202005291900" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="style.css?ver=202005300200" type="text/css" media="screen" charset="utf-8" />
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="kuromoji/build/kuromoji.js"></script>
 </head>
 
 <body>
     <div class="main">
         <div id="status" class="error">起動中...</div>
+        <div id="status_kuromoji_loading" class="hidden"></div>
         
         <div id="video_wrapper" class="video_wrapper">
             <video id="result_video" class="video_area" autoplay></video>
@@ -208,8 +210,11 @@
 
             <div class="control_selector_wrapper">
                 音声認識：
-                <select id="select_language" onchange="updateCountry()"></select>
-                <select id="select_dialect" class="select_dialect" onchange="updateLanguage()"></select>
+                <select id="select_language" class="selector" onchange="updateCountry()"></select>
+                <select id="select_dialect" class="selector" onchange="updateLanguage()"></select>
+                <span id="checkbox_hiragana_wrapper" class="selector">
+                    ひらがな<a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay#ひらがなで表示したい">[?]</a>: <input type="checkbox" id="checkbox_hiragana" name="checkbox_hiragana" value="hiragana" oninput="initKuromoji(this)">
+                </span>
                 翻訳：
                 <div id="google_translate_element" class="select_translation"></div>
             </div>
@@ -333,7 +338,12 @@
                     if (lang == 'ja-JP') {
                         result_transcript += '。';
                     }
-                    document.getElementById('result_text').innerHTML = result_transcript;
+
+                    if(document.getElementById('checkbox_hiragana').checked && lang == 'ja-JP'){
+                        document.getElementById('result_text').innerHTML = resultToHiragana(result_transcript);
+                    }else{
+                        document.getElementById('result_text').innerHTML = result_transcript;
+                    }
 
                     if(document.getElementById('checkbox_timestamp').checked){
                         // タイムスタンプ機能
@@ -354,7 +364,14 @@
                     vr_function();
                     flag_speech = 0;
                 } else {
-                    document.getElementById('result_text').innerHTML = results[i][0].transcript;
+                    var result_transcript = results[i][0].transcript;
+
+                    if(document.getElementById('checkbox_hiragana').checked && lang == 'ja-JP'){
+                        document.getElementById('result_text').innerHTML = resultToHiragana(result_transcript);
+                    }else{
+                        document.getElementById('result_text').innerHTML = result_transcript;
+                    }
+
                     flag_speech = 1;
                 }
             }
@@ -650,7 +667,7 @@
         for (var i = 1; i < list.length; i++) {
             select_dialect.options.add(new Option(list[i][1], list[i][0]));
         }
-        select_dialect.style.visibility = list[1].length == 1 ? 'hidden' : 'visible';
+        select_dialect.style.display = list[1].length == 1 ? 'none' : 'inline';
         updateLanguage()
     }
 
@@ -663,6 +680,16 @@
         lang = select_dialect.value;
         if(flag_recognition_stopped){
             vr_function();   
+        }
+
+        var el_status_kuromoji_loading = document.getElementById('status_kuromoji_loading');
+        var el_checkbox_hiragana = document.getElementById('checkbox_hiragana_wrapper');
+        if(lang == 'ja-JP'){
+            el_status_kuromoji_loading.style.display = "inline-block";
+            el_checkbox_hiragana.style.display = "inline";
+        }else{
+            el_status_kuromoji_loading.style.display = "none";
+            el_checkbox_hiragana.style.display = "none";
         }
     }
 
@@ -753,6 +780,11 @@
             el.checked = config.checkbox_timestamp;
             triggerEvent('input', el);
         }
+        if (typeof config.checkbox_hiragana !== 'undefined') {
+            const el = document.getElementById('checkbox_hiragana');
+            el.checked = config.checkbox_hiragana;
+            triggerEvent('input', el);
+        }
 
         document.querySelectorAll('input.control_input').forEach(
             el => el.addEventListener('input', updateConfigValue)
@@ -762,6 +794,7 @@
         );
         document.querySelector('#select_font').addEventListener('change', updateConfigValue);
         document.querySelector('#checkbox_timestamp').addEventListener('input', function(e) {updateConfig(e.target.id, e.target.checked)});
+        document.querySelector('#checkbox_hiragana').addEventListener('input', function(e) {updateConfig(e.target.id, e.target.checked)});
     }
 
     function updateConfig(key, value) {
@@ -791,6 +824,47 @@
         localStorage.removeItem('speech_to_text_config');
         location.reload();
     }
+
+    // 形態素解析
+    let kuromojiObj;
+    function initKuromoji(checkbox) {
+        if(checkbox.checked == true && kuromojiObj == undefined){
+            document.getElementById('status_kuromoji_loading').innerHTML = "ひらがなデータ読み込み中...";
+            document.getElementById('status_kuromoji_loading').className = "processing";
+            kuromoji.builder({ dicPath: "kuromoji/dict/" }).build(function (err, tokenizer) {
+                kuromojiObj = tokenizer
+                document.getElementById('status_kuromoji_loading').innerHTML = "ひらがなデータ読み込み完了";
+                document.getElementById('status_kuromoji_loading').className = "ready";
+            });
+        }
+    }
+
+    // 結果をひらがなにする
+    function resultToHiragana(text) {
+        if(kuromojiObj == undefined){
+            return text;
+        }
+        var kuromoji_result = kuromojiObj.tokenize(text);
+        var result_hiragana = '';
+        for (var i = 0; i < kuromoji_result.length; i++) {
+            if(kuromoji_result[i].word_type == "KNOWN"){
+                result_hiragana += kuromoji_result[i].reading;
+            }else{
+                result_hiragana += kuromoji_result[i].surface_form;
+            }
+        }
+        return katakanaToHiragana(result_hiragana);
+    }
+
+    // カタカナをひらがなにする
+    // 参考: https://gist.github.com/kawanet/5553478
+    function katakanaToHiragana(src) {
+        return src.replace(/[\u30a1-\u30f6]/g, function(match) {
+            var chr = match.charCodeAt(0) - 0x60;
+            return String.fromCharCode(chr);
+        });
+    }
+
 </script>
 
 </html>
