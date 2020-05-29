@@ -660,7 +660,7 @@
             recognition.stop();
             flag_recognition_stopped = 1;
         }
-        lang = langs[select_language.selectedIndex][1][select_dialect.selectedIndex];
+        lang = select_dialect.value;
         if(flag_recognition_stopped){
             vr_function();   
         }
