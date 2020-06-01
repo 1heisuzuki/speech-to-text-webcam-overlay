@@ -209,6 +209,8 @@
             </div>
 
             <div class="control_selector_wrapper">
+                カメラ：
+                <select id="select_camera" onchange="setupCamera()"></select>
                 音声認識：
                 <select id="select_language" class="selector" onchange="updateCountry()"></select>
                 <select id="select_dialect" class="selector" onchange="updateLanguage()"></select>
@@ -246,6 +248,9 @@
         </div>
     </div>
 </body>
+
+<!-- Chrome で MediaDevices.enumerateDevices() を動かすためのpolyfill -->
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 
 <script>
     // ブラウザ判定
@@ -288,13 +293,112 @@
 
     const $video = document.getElementById('result_video');  // 映像表示エリア
 
-    navigator.mediaDevices.getUserMedia({ video: { aspectRatio: { exact: 1.7777777778 } }, audio: false })
-        .then(stream => $video.srcObject = stream)
-        .catch(err => {
-            alert(`カメラ映像を読み込めませんでした。ブラウザのアクセス制限など，設定を確認してください`);
-            document.getElementById('help_on_error').style.display='block';
-        });
+    // select要素のoptionをクリアする
+    function clearSelect(select) {
+        while(select.firstChild) {
+            select.removeChild(select.firstChild);
+        }
+    }
 
+    // select要素のoptionに、option.valueがvalueな項目があれば選択する
+    // 戻り値は、option中に該当項目があればtrue
+    function selectValueIfExists(select, value) {
+        if (value === null || value === undefined) return;
+        var result = false;
+        select.childNodes.forEach(n => {
+            if (n.value === value) {
+                select.value = value;
+                result = true;
+            }
+        })
+        return result;
+    }
+
+    // カメラを列挙して select_camera オブジェクトの option に設定
+    // 参考：https://github.com/webrtc/samples/blob/gh-pages/src/content/devices/input-output/js/main.js
+    // deviceInfos : MediaDeviceInfo[]
+    // 引数は MediaDevices.enumerateDevices() の戻り値の Promise の中身という前提
+    // 参考：https://developer.mozilla.org/ja/docs/Web/API/MediaDevices/enumerateDevices
+    function updateCameraSelector(deviceInfos) {
+        // 選んだ項目を最後で再度選ぶために記憶
+        const selectedDevice = select_camera.value;
+        // 既存の選択肢をクリア
+        clearSelect(select_camera);
+        // メディアデバイス一覧のうち、videoinputをoption要素としてselectに追加
+        for (let i=0 ; i !== deviceInfos.length ; ++i) {
+            const deviceInfo = deviceInfos[i];
+            if (deviceInfo.kind === 'videoinput') {
+                const option = document.createElement('option');
+                option.value = deviceInfo.deviceId;
+                option.text = deviceInfos[i].label || `camera ${select_camera.length + 1}`;
+                select_camera.appendChild(option);
+            }
+        }
+        // 元々選んでいた項目があれば、その項目を再度選択
+        selectValueIfExists(select_camera, selectedDevice);
+    }
+
+    // video要素にstreamを設定し、メディア（カメラ、マイク）一覧を返す
+    // 参考：https://github.com/webrtc/samples/blob/gh-pages/src/content/devices/input-output/js/main.js
+    function handleStream(stream) {
+        window.stream = stream;
+        $video.srcObject = stream;
+        return navigator.mediaDevices.enumerateDevices();
+    }
+
+    // 設定に基づきカメラ映像を表示
+    // isInit : カメラ選択肢がない場合だけtrue、他（選択肢切替時や保存された設定からの復元時）は不要
+    // 参考：https://github.com/webrtc/samples/blob/gh-pages/src/content/devices/input-output/js/main.js
+    function setupCamera(isInit) {
+        if (window.stream) {
+            window.stream.getTracks().forEach(track => {
+                track.stop();
+            });
+        }
+        const videoSource = select_camera.value;
+        const constraints = {
+            video: {
+                aspectRatio: { ideal: 1.7777777778 }
+            },
+            audio: false
+        };
+        if (isInit !== true) {
+            constraints.video["deviceId"] = videoSource ? {exact: videoSource} : undefined;
+        }
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(handleStream)
+            .then(updateCameraSelector)
+            .catch(onCameraError);
+    }
+
+    // カメラ初回起動
+    function initCamera() {
+        const conf = JSON.parse(localStorage.speech_to_text_config || '{}');
+        var camera_selected = false;
+        if (typeof conf.select_camera !== 'undefined') {
+            if (selectValueIfExists(select_camera, conf.select_camera)) {
+                // カメラ選択肢が保存され、selectのoption中にあれば選択されたカメラを起動
+                camera_selected = true;
+                setupCamera();
+            }
+        }
+        if (!camera_selected) {
+            // カメラ設定がされていなければ、デフォルトカメラで開始
+            setupCamera(true); // 引数はデフォルトカメラ選択の意
+        }
+    }
+
+    function onCameraError(err) {
+        console.log(`カメラ関連の問題：${err.name} / ${err.message}`)
+        alert(`カメラ映像を読み込めませんでした。ブラウザのアクセス制限など，設定を確認してください`);
+        document.getElementById('help_on_error').style.display='block';
+    }
+
+    // カメラの選択肢を生成
+    navigator.mediaDevices.enumerateDevices()
+        .then(updateCameraSelector)
+        .then(initCamera)
+        .catch(onCameraError);
 
     // 音声認識
     // 参考: https://jellyware.jp/kurage/iot/webspeechapi.html
@@ -791,6 +895,7 @@
         document.querySelectorAll('input[name="selector_position"]').forEach(
             el => el.addEventListener('input', ev => updateConfig('position', el.id))
         );
+        document.querySelector('#select_camera').addEventListener('change', updateConfigValue);
         document.querySelector('#select_font').addEventListener('change', updateConfigValue);
         document.querySelector('#checkbox_timestamp').addEventListener('input', function(e) {updateConfig(e.target.id, e.target.checked)});
         document.querySelector('#checkbox_hiragana').addEventListener('input', function(e) {updateConfig(e.target.id, e.target.checked)});
