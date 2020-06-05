@@ -19,11 +19,13 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 
 
 # 動作環境
-- PC版 Google Chrome
-  - 最新のWindows, macOSでなんとなく確認済
-  - 詳しい動作検証はしていないのでご了承ください :pray:
-- Android端末 Chrome
-  - 筆者が端末を所持していないため未検証だが，動いたとの情報あり
+かなりざっくりとした動作環境しか行っていません。  
+同様の環境で動かない場合はブラウザのアップデートや別ブラウザでの利用等をお試しください。
+
+- PC版 Google Chrome / Chromium / Vivaldi
+  - Windows, macOS, Linux (Ubuntu Mate 20.04) などで確認済み
+- Android版 Google Chrome
+  - 筆者が端末を所持していないため未検証だが，動いたとの情報あり  
 
 # 何ができるか
 - 音声からリアルタイムで文字起こしを行い，Webカメラの映像に重ねてブラウザ上で表示する
@@ -132,5 +134,5 @@ https://webparts.cman.jp/input/textarea/
 https://qiita.com/kerupani129/items/99fd7a768538fcd33420
 - JavaScriptからGoogle翻訳を使えるAPI試してみた【コード例付き】  
 https://pisuke-code.com/js-usage-of-google-trans-api/
-- しりとり審判アプリを作った話
+- しりとり審判アプリを作った話  
 https://medium.com/@Mitu217/しりとり審判アプリを作った話-294b4947b008
