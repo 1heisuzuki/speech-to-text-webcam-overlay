@@ -150,6 +150,19 @@
                         <label for="slider_text_stroke" class="control_label">フォント </label>
                         <select id="select_font" onchange="document.getElementById('result_text').style.fontFamily=fonts_custom[select_font.selectedIndex][1]" style="width: 94%; height: 100%;"></select>
                     </div>
+
+                    <div class="control_form control_form_selector col-2">
+                        <label for="select_autoclear_text" class="control_label">自動消去 </label>
+                        <select id="select_autoclear_text" onchange="updateTextClearSecond()">
+                            <option value="0">なし</option>
+                            <option value="5">5秒</option>
+                            <option value="10">10秒</option>
+                            <option value="20">20秒</option>
+                            <option value="30" selected>30秒</option>
+                            <option value="45">45秒</option>
+                            <option value="60">1分</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
@@ -221,16 +234,6 @@
                 </span>
                 翻訳：
                 <div id="google_translate_element" class="select_translation selector"></div>
-                自動消去：
-                <select id="select_autoclear_text" onchange="updateTextClearSecond()">
-                    <option value="0">なし</option>
-                    <option value="5">5秒</option>
-                    <option value="10">10秒</option>
-                    <option value="20">20秒</option>
-                    <option value="30" selected>30秒</option>
-                    <option value="45">45秒</option>
-                    <option value="60">1分</option>
-                </select>
             </div>
         </div>
         <div id="log" class="log_wrapper">
