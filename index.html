@@ -220,7 +220,17 @@
                     ひらがな<a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay#ひらがなで表示したい" target="_blank">[?]</a>: <input type="checkbox" id="checkbox_hiragana" name="checkbox_hiragana" value="hiragana" oninput="initKuromoji(this)">
                 </span>
                 翻訳：
-                <div id="google_translate_element" class="select_translation"></div>
+                <div id="google_translate_element" class="select_translation selector"></div>
+                自動消去：
+                <select id="select_autoclear_text" onchange="updateTextClearSecond()">
+                    <option value="0">なし</option>
+                    <option value="5">5秒</option>
+                    <option value="10">10秒</option>
+                    <option value="20">20秒</option>
+                    <option value="30" selected>30秒</option>
+                    <option value="45">45秒</option>
+                    <option value="60">1分</option>
+                </select>
             </div>
         </div>
         <div id="log" class="log_wrapper">
@@ -407,6 +417,8 @@
     var flag_speech = 0;
     var recognition;
     var lang = 'ja-JP';
+    var textUpdateTimeoutID = 0;
+    var textUpdateTimeoutSecond = 30; // 音声認識結果が更新されない場合にクリアするまでの秒数（0以下の場合は自動クリアしない）
 
     function vr_function() {
         window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
@@ -449,6 +461,7 @@
                     }else{
                         document.getElementById('result_text').innerHTML = result_transcript;
                     }
+                    setTimeoutForClearText();
 
                     if(document.getElementById('checkbox_timestamp').checked){
                         // タイムスタンプ機能
@@ -486,6 +499,36 @@
         document.getElementById('status').innerHTML = "待機中";
         document.getElementById('status').className = "ready";
         recognition.start();
+    }
+
+    function updateTextClearSecond() {
+        const sec = Number(document.getElementById('select_autoclear_text').value);
+        if ((!isNaN(sec)) && isFinite(sec) && (sec >= 0)) {
+            textUpdateTimeoutSecond = sec;
+        }
+    }
+
+    function clearTimeoutForClearText() {
+        if (textUpdateTimeoutID !== 0) {
+            clearTimeout(textUpdateTimeoutID);
+            textUpdateTimeoutID = 0;
+        }
+    }
+
+    // 変数 textUpdateTimeoutSecond に基づいてタイマーを設定する。
+    // タイマーの時間切れで、字幕を自動的に消去する。
+    // 変数の値がゼロ以下の場合はタイマーは設定されない。
+    // タイマーが既に動いている場合、処理タイミングは後からのもので上書きする。
+    function setTimeoutForClearText() {
+        if (textUpdateTimeoutSecond <= 0) return;
+
+        clearTimeoutForClearText();
+        textUpdateTimeoutID = setTimeout(
+            () => {
+                document.getElementById('result_text').innerHTML = "";
+                textUpdateTimeoutID = 0;
+            }, 
+            textUpdateTimeoutSecond * 1000);
     }
 
     // 認識結果のログのtextareaを自動変形する
@@ -890,6 +933,11 @@
             el.checked = config.checkbox_hiragana;
             triggerEvent('input', el);
         }
+        if (typeof config.select_autoclear_text !== 'undefined') {
+            const el = document.getElementById('select_autoclear_text');
+            selectValueIfExists(el, config.select_autoclear_text);
+            triggerEvent('change', el);
+        }
 
         document.querySelectorAll('input.control_input').forEach(
             el => el.addEventListener('input', updateConfigValue)
@@ -901,6 +949,7 @@
         document.querySelector('#select_font').addEventListener('change', updateConfigValue);
         document.querySelector('#checkbox_timestamp').addEventListener('input', function(e) {updateConfig(e.target.id, e.target.checked)});
         document.querySelector('#checkbox_hiragana').addEventListener('input', function(e) {updateConfig(e.target.id, e.target.checked)});
+        document.querySelector('#select_autoclear_text').addEventListener('change', updateConfigValue);
     }
 
     function updateConfig(key, value) {
