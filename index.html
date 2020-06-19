@@ -933,6 +933,11 @@
             el.checked = config.checkbox_hiragana;
             triggerEvent('input', el);
         }
+        if (typeof config.select_autoclear_text !== 'undefined') {
+            const el = document.getElementById('select_autoclear_text');
+            selectValueIfExists(el, config.select_autoclear_text);
+            triggerEvent('change', el);
+        }
 
         document.querySelectorAll('input.control_input').forEach(
             el => el.addEventListener('input', updateConfigValue)
@@ -944,6 +949,7 @@
         document.querySelector('#select_font').addEventListener('change', updateConfigValue);
         document.querySelector('#checkbox_timestamp').addEventListener('input', function(e) {updateConfig(e.target.id, e.target.checked)});
         document.querySelector('#checkbox_hiragana').addEventListener('input', function(e) {updateConfig(e.target.id, e.target.checked)});
+        document.querySelector('#select_autoclear_text').addEventListener('change', updateConfigValue);
     }
 
     function updateConfig(key, value) {
