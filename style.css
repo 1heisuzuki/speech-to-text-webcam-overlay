@@ -17,6 +17,11 @@ body {
 	margin-bottom: 1rem;
 }
 
+.help_wrapper {
+	text-align: center;
+	padding-bottom: 2rem;
+}
+
 a:link, a:visited, a:hover, a:active {
 	color: #777;
 }
@@ -25,7 +30,7 @@ a:link, a:visited, a:hover, a:active {
 	position: relative;
 	width: 960px;
 	height: 540px;
-	margin-bottom: 0.5rem;
+	margin-bottom: 2rem;
 	transition: all 0.3s;
 }
 
@@ -70,7 +75,7 @@ a:link, a:visited, a:hover, a:active {
 
 .text_overlay_wrapper.split {
 	width: 100%;
-    height: 100%;
+   height: 100%;
 	top: 0%;
 	left: 0%;
 }
@@ -131,6 +136,7 @@ a:link, a:visited, a:hover, a:active {
 	-webkit-text-stroke-width: 0.3px;
 	-webkit-text-stroke-color: #000;
 	text-align: justify;
+     word-wrap: break-word;
 	opacity: 0.9;
 }
 
@@ -164,6 +170,7 @@ a:link, a:visited, a:hover, a:active {
 	letter-spacing: 0.02rem;
     line-height: 100%;
 	text-align: center;
+    border-radius: 4px;
 }
 
 .processing {
@@ -185,13 +192,34 @@ a:link, a:visited, a:hover, a:active {
 	color: #ff0000;
 }
 
-.controls_wrapper {
-	display: flex;
-	flex-wrap: wrap;
-	margin-bottom: 1rem;
-	opacity: 0.6;
+.interface_wrapper {
+	text-align: center;
 }
 
+.controls_wrapper {
+  	display: none;
+	flex-wrap: wrap;
+	margin-bottom: 2rem;
+	opacity: 0.6;
+	text-align: left;
+}
+
+.checkboxes {
+    display: inline-block;
+    margin: 6px;
+	opacity: 0.8;
+}
+
+.checkboxes_label {
+    display: inline-block;
+    margin-bottom: 16px;
+	color: #999;
+}
+
+#checkbox_controls:checked ~ .controls_wrapper {
+	display: flex;
+ }
+ 
 .control_wrapper {
 	display: flex;
 	flex-wrap: wrap;
@@ -386,6 +414,16 @@ select {
 	font-size: 85%;
 	line-height: 145%;
 	margin-bottom: 0.5rem;
+}
+
+#checkbox_log:checked ~ .log_wrapper {
+    display: block !important;
+}
+
+.log_wrapper {
+    display: none;
+	text-align: left;
+	margin-bottom: 2rem;
 }
 
 .log_link_description { 
