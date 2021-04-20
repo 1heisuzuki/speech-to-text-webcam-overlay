@@ -20,6 +20,9 @@
 
 <body>
   <div class="main">
+    <div id="status" class="error">起動中...</div>
+    <div id="status_kuromoji_loading" class="hidden"></div>
+
     <div id="video_wrapper" class="video_wrapper">
       <video id="result_video" class="video_area" autoplay></video>
       <div id="video_bg" class="video_bg hidden"></div>
@@ -29,9 +32,6 @@
       </div>
       <img alt="FullScreen" src="fullscreen.svg" id="FullScreenBtn" class="FullScreenBtn" width="20" height="20" style="display:block">
     </div>
-
-    <div id="status" class="error">起動中...</div>
-    <div id="status_kuromoji_loading" class="hidden"></div>
 
     <div id="help_on_error" class="help_on_error">
       カメラやマイクが機能しないとき → ページの再読み込みや，ブラウザの設定を確認してください: <a href="https://support.google.com/chrome/answer/2693767?co=GENIE.Platform%3DDesktop&hl=ja&oco=1" target="_blank">Chrome ヘルプ</a>
