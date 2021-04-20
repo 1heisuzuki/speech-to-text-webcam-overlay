@@ -17,6 +17,11 @@ body {
 	margin-bottom: 1rem;
 }
 
+.help_wrapper {
+	text-align: center;
+	padding-bottom: 2rem;
+}
+
 a:link, a:visited, a:hover, a:active {
 	color: #777;
 }
@@ -25,7 +30,7 @@ a:link, a:visited, a:hover, a:active {
 	position: relative;
 	width: 960px;
 	height: 540px;
-	margin-bottom: 0.5rem;
+	margin-bottom: 2rem;
 	transition: all 0.3s;
 }
 
@@ -187,16 +192,22 @@ a:link, a:visited, a:hover, a:active {
 	color: #ff0000;
 }
 
+.interface_wrapper {
+	text-align: center;
+}
+
 .controls_wrapper {
   	display: none;
 	flex-wrap: wrap;
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
 	opacity: 0.6;
+	text-align: left;
 }
 
 .checkboxes {
     display: inline-block;
     margin: 6px;
+	opacity: 0.8;
 }
 
 .checkboxes_label {
@@ -406,11 +417,13 @@ select {
 }
 
 #checkbox_log:checked ~ .log_wrapper {
-    display: inline-block !important;
+    display: block !important;
 }
 
 .log_wrapper {
     display: none;
+	text-align: left;
+	margin-bottom: 2rem;
 }
 
 .log_link_description { 
