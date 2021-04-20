@@ -38,19 +38,6 @@
     </div>
 
     <div class="interface_wrapper">
-      <div class="control_button_wrapper">
-        <input type="button" value="カメラ 表示/非表示" onclick="toggleClass('result_video','hidden')">
-        <input type="button" value="カメラ 左右反転" onclick="toggleClass('result_video','mirror')">
-        <input type="button" value="文字 表示/非表示" onclick="toggleClass('text_overlay_wrapper','hidden')">
-        <input type="button" value="文字 左右反転" onclick="toggleClass('text_overlay_wrapper','mirror')">
-        <input type="button" value="全画面化ボタン 表示/非表示" onclick="toggleClass('FullScreenBtn','hidden')">
-        <input type="button" value="設定の初期化" onclick="deleteConfig()">
-      </div>
-
-      <div class="control_selector_wrapper">
-        カメラ：
-        <select id="select_camera" onchange="setupCamera()"></select>
-      </div>
       <input class="checkboxes" id="checkbox_controls" type="checkbox"><label class="checkboxes_label">詳細設定を表示</label><br>
       <input class="checkboxes" id="checkbox_log" type="checkbox"><label class="checkboxes_label">認識結果のログを表示</label>
       <div class="controls_wrapper control_wrapper_row">
@@ -196,6 +183,21 @@
             </div>
           </div>
         </div>
+
+        <div class="control_button_wrapper">
+          <input type="button" value="カメラ 表示/非表示" onclick="toggleClass('result_video','hidden')">
+          <input type="button" value="カメラ 左右反転" onclick="toggleClass('result_video','mirror')">
+          <input type="button" value="文字 表示/非表示" onclick="toggleClass('text_overlay_wrapper','hidden')">
+          <input type="button" value="文字 左右反転" onclick="toggleClass('text_overlay_wrapper','mirror')">
+          <input type="button" value="全画面化ボタン 表示/非表示" onclick="toggleClass('FullScreenBtn','hidden')">
+          <input type="button" value="設定の初期化" onclick="deleteConfig()">
+        </div>
+  
+        <div class="control_selector_wrapper">
+          カメラ：
+          <select id="select_camera" onchange="setupCamera()"></select>
+        </div>
+
         <div class="control_selector_wrapper">
           音声認識<a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay#他の言語を認識したい" target="_blank">[?]</a>:
           <select id="select_language" class="selector" onchange="updateCountry()"></select>
