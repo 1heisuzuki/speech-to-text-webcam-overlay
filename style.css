@@ -165,7 +165,7 @@ a:link, a:visited, a:hover, a:active {
 	letter-spacing: 0.02rem;
     line-height: 100%;
 	text-align: center;
-     border-radius: 4px;
+    border-radius: 4px;
 }
 
 .processing {
@@ -195,14 +195,14 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .checkboxes {
-     display: inline-block;
-     margin: 6px;
+    display: inline-block;
+    margin: 6px;
 }
 
 .checkboxes_label {
-     display: inline-block;
-     margin-bottom: 16px;
-		 color: #999;
+    display: inline-block;
+    margin-bottom: 16px;
+	color: #999;
 }
 
 #checkbox_controls:checked ~ .controls_wrapper {
@@ -406,11 +406,11 @@ select {
 }
 
 #checkbox_log:checked ~ .log_wrapper {
-     display: inline-block !important;
+    display: inline-block !important;
 }
 
 .log_wrapper {
-     display: none;
+    display: none;
 }
 
 .log_link_description { 
