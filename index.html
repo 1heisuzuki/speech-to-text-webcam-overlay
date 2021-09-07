@@ -65,23 +65,23 @@
               <div class="control_input">
                 <label for="selector_position_full">
               <input id="selector_position_full" type="radio" name='selector_position'
-                oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper full'" checked> 全体
+                oninput="document.getElementById('text_overlay_wrapper').classList.add('full'), document.getElementById('text_overlay_wrapper').classList.remove('split','right','left','top','bottom')" checked> 全体
               </label>
                 <label for="selector_position_left">
               <input id="selector_position_left" type="radio" name='selector_position'
-                oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper split left'"> 左
+                oninput="document.getElementById('text_overlay_wrapper').classList.add('split','left'), document.getElementById('text_overlay_wrapper').classList.remove('full','right','top','bottom')"> 左
               </label>
                 <label for="selector_position_right">
               <input id="selector_position_right" type="radio"  name='selector_position'
-                oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper split right'"> 右
+                oninput="document.getElementById('text_overlay_wrapper').classList.add('split','right'), document.getElementById('text_overlay_wrapper').classList.remove('full','left','top','bottom')"> 右
               </label>
-                <label for="selector_position_top">
+              <label for="selector_position_top">
               <input id="selector_position_top" type="radio" name='selector_position'
-                oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper split top'"> 上
+                oninput="document.getElementById('text_overlay_wrapper').classList.add('split','top'), document.getElementById('text_overlay_wrapper').classList.remove('full','left','right','bottom')"> 上
               </label>
-                <label for="selector_position_bottom">
+              <label for="selector_position_bottom">
               <input id="selector_position_bottom" type="radio" name='selector_position'
-                oninput="document.getElementById('text_overlay_wrapper').className='text_overlay_wrapper split bottom'"> 下
+                oninput="document.getElementById('text_overlay_wrapper').classList.add('split','bottom'), document.getElementById('text_overlay_wrapper').classList.remove('full','left','right','top')"> 下
               </label>
               </div>
             </div>
