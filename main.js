@@ -226,7 +226,8 @@ function vr_function() {
         } else {
           document.getElementById('result_text').innerHTML = result_transcript;
         }
-
+        
+        clearTimeoutForClearText();
         flag_speech = 1;
       }
     }
