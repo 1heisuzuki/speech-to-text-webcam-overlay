@@ -226,7 +226,8 @@ function vr_function() {
         } else {
           document.getElementById('result_text').innerHTML = result_transcript;
         }
-
+        
+        clearTimeoutForClearText();
         flag_speech = 1;
       }
     }
@@ -663,6 +664,24 @@ function initConfig() {
       }
     }
   });
+  
+  ['checkbox_controls',
+    'checkbox_log',
+    'checkbox_timestamp',
+    'checkbox_hiragana'
+  ].forEach(id => {
+    const el = document.getElementById(id);
+    if(el){
+      if (typeof config[id] !== 'undefined') {
+        el.checked = config[el.id];
+        triggerEvent('input', el);
+      }
+      el.addEventListener('input', function (e) {
+        updateConfig(e.target.id, e.target.checked);
+      });
+    }
+  });
+
   if (typeof config.position !== 'undefined') {
     const el = document.getElementById(config.position);
     el.checked = 'checked';
@@ -671,16 +690,6 @@ function initConfig() {
   if (typeof config.select_font !== 'undefined') {
     select_font.selectedIndex = config.select_font;
     triggerEvent('change', select_font);
-  }
-  if (typeof config.checkbox_timestamp !== 'undefined') {
-    const el = document.getElementById('checkbox_timestamp');
-    el.checked = config.checkbox_timestamp;
-    triggerEvent('input', el);
-  }
-  if (typeof config.checkbox_hiragana !== 'undefined') {
-    const el = document.getElementById('checkbox_hiragana');
-    el.checked = config.checkbox_hiragana;
-    triggerEvent('input', el);
   }
   if (typeof config.select_autoclear_text !== 'undefined') {
     const el = document.getElementById('select_autoclear_text');
@@ -696,12 +705,7 @@ function initConfig() {
   );
   document.querySelector('#select_camera').addEventListener('change', updateConfigValue);
   document.querySelector('#select_font').addEventListener('change', updateConfigValue);
-  document.querySelector('#checkbox_timestamp').addEventListener('input', function(e) {
-    updateConfig(e.target.id, e.target.checked)
-  });
-  document.querySelector('#checkbox_hiragana').addEventListener('input', function(e) {
-    updateConfig(e.target.id, e.target.checked)
-  });
+
   document.querySelector('#select_autoclear_text').addEventListener('change', updateConfigValue);
 }
 
