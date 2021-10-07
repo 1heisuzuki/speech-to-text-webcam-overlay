@@ -196,6 +196,8 @@ function vr_function() {
           last_finished += '。';
         }
 
+        var result_log = last_finished
+
         if (document.getElementById('checkbox_timestamp').checked) {
           // タイムスタンプ機能
           var now = new window.Date();
@@ -207,10 +209,10 @@ function vr_function() {
           var Sec = ("0" + now.getSeconds()).slice(-2);
 
           var timestamp = Year + '-' + Month + '-' + Date + ' ' + Hour + ':' + Min + ':' + Sec + '&#009;'
-          result_transcript = timestamp + result_transcript
+          result_log = timestamp + result_log
         }
 
-        document.getElementById('result_log').insertAdjacentHTML('beforeend', last_finished + '\n');
+        document.getElementById('result_log').insertAdjacentHTML('beforeend', result_log + '\n');
         textAreaHeightSet(document.getElementById('result_log'));
         need_reset = true;
         setTimeoutForClearText();
