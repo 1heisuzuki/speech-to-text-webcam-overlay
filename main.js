@@ -106,8 +106,8 @@ function setupCamera(isInit) {
       aspectRatio: {
         ideal: 1.7777777778
       },
-      width: { ideal: 960 },
-      height: { ideal: 540 }
+      width: { ideal: 1280 },
+      height: { ideal: 720 }
     },
     audio: false
   };
