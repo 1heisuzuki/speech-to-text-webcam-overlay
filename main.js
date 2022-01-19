@@ -1,3 +1,16 @@
+// PWA化のためにService Workerを登録
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service_worker.js')
+    .then((registration) => {
+      console.log(`[Main] ServiceWorker registration finished. Scope:${registration.scope}`);
+    })
+    .catch((reason) => {
+      console.log(`[Main] ServiceWorker registratio failed. Reason:${reason}`);
+    });
+  });
+}
+
 // ブラウザ判定
 // 参考: https://qiita.com/sakuraya/items/33f93e19438d0694a91d
 var userAgent = window.navigator.userAgent.toLowerCase();

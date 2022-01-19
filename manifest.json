@@ -1,0 +1,22 @@
+{
+  "name": "Speech-to-text Webcam overlay",
+  "short_name": "caption-webcam",
+  "theme_color": "#000000",
+  "background_color": "#303030",
+  "display": "standalone",
+  "description": "Tool to show webcam video with machine-recognized captions overlaying",
+  "scope": "./",
+  "start_url": "./index.html",
+  "icons": [
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
