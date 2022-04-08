@@ -130,6 +130,7 @@ a:active {
 	font-family: 'Noto Sans JP', sans-serif;
 	font-size: 68px;
 	font-weight: 500;
+	font-synthesis: none;
 	letter-spacing: 0.05em;
 	line-height: 163%;
 	color: #fff;

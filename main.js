@@ -620,14 +620,14 @@ function googleTranslateElementInit() {
 // フォント切替
 // 参考: https://www.google.com/intl/ja/chrome/demos/speech.html
 var fonts_custom = [
-  ['Noto Sans JP', "'Noto Sans JP', sans-serif"],
-  ['BIZ UDPゴシック', "'BIZ UDPゴシック', 'BIZ UDPGothic', 'Noto Sans JP', sans-serif"],
-  ['BIZ UDP明朝', "'BIZ UDP明朝', 'BIZ UDPMincho', 'Noto Sans JP', serif"],
-  ['游ゴシック', "游ゴシック体, 'Yu Gothic', YuGothic, sans-serif"],
-  ['メイリオ', "'メイリオ', 'Meiryo', 'Noto Sans JP', sans-serif"],
-  ['ポップ体（Windows）', "'HGS創英角ﾎﾟｯﾌﾟ体', 'Noto Sans JP', sans-serif"],
-  ['ゴシック体（ブラウザ標準）', "sans-serif"],
-  ['明朝体（ブラウザ標準）', "serif"]
+  ['Noto Sans JP', "'Noto Sans JP', sans-serif", '500'],
+  ['BIZ UDPゴシック', "'BIZ UDPゴシック', 'BIZ UDPGothic', 'Noto Sans JP', sans-serif", '700'],
+  ['BIZ UDP明朝', "'BIZ UDP明朝', 'BIZ UDPMincho', 'Noto Sans JP', serif", '400'],
+  ['游ゴシック', "游ゴシック体, 'Yu Gothic', YuGothic, sans-serif", 'bold'],
+  ['メイリオ', "'メイリオ', 'Meiryo', 'Noto Sans JP', sans-serif", 'bold'],
+  ['ポップ体（Windows）', "'HGS創英角ﾎﾟｯﾌﾟ体', 'Noto Sans JP', sans-serif", 'bold'],
+  ['ゴシック体（ブラウザ標準）', "sans-serif", 'normal'],
+  ['明朝体（ブラウザ標準）', "serif", 'normal']
 ];
 
 for (var i = 0; i < fonts_custom.length; i++) {
