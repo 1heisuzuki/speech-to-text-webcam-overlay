@@ -98,13 +98,7 @@ Google Chrome ダウンロードページ: https://www.google.com/chrome/
 - 実装しました。
 - 操作パネルの「音声認識：Japanese」と書かれているところから，他の言語を選択してください。
 
-### BIZ UD フォントが表示されない
-- Windows 10 の場合，Windows 10 October 2018 Update が適用されていれば利用できます。  
-参考: https://forest.watch.impress.co.jp/docs/news/1149745.html
-- それ以外（他のWindows，macOSなど）の場合は，フォントをインストールすることで利用が可能になります。下記ページ下部より「MORISAWA BIZ+ 無償版」がダウンロードできます。  
-ダウンロード: https://www.morisawa.co.jp/products/fonts/bizplus/price/  
-
-### BIZ UD フォント以外のフォントが表示されない
+### フォントが表示されない
 - 選択が可能になっているフォントのなかで，PCによってはインストールされていない場合があります。
 - フォントをインストールするか，別のフォントを選択してください。
 
