@@ -139,7 +139,7 @@
 
             <div class="control_form control_form_selector col-3">
               <label for="select_font" class="control_label">フォント </label>
-              <select id="select_font" onchange="document.getElementById('result_text').style.fontFamily=fonts_custom[select_font.selectedIndex][1]" style="width: 94%; height: 100%;"></select>
+              <select id="select_font" onchange="document.getElementById('result_text').style.fontFamily=fonts_custom[select_font.selectedIndex][1];document.getElementById('result_text').style.fontWeight=fonts_custom[select_font.selectedIndex][2]" style="width: 94%; height: 100%;"></select>
             </div>
 
             <div class="control_form control_form_selector col-2">
