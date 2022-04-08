@@ -622,7 +622,7 @@ function googleTranslateElementInit() {
 var fonts_custom = [
   ['Noto Sans JP', "'Noto Sans JP', sans-serif"],
   ['BIZ UDPゴシック', "'BIZ UDPゴシック', 'BIZ UDPGothic', 'Noto Sans JP', sans-serif"],
-  ['BIZ UDP明朝', "'BIZ UDP明朝', 'BIZ UDPMincho', 'Noto Sans JP', sans-serif"],
+  ['BIZ UDP明朝', "'BIZ UDP明朝', 'BIZ UDPMincho', 'Noto Sans JP', serif"],
   ['游ゴシック', "游ゴシック体, 'Yu Gothic', YuGothic, sans-serif"],
   ['メイリオ', "'メイリオ', 'Meiryo', 'Noto Sans JP', sans-serif"],
   ['ポップ体（Windows）', "'HGS創英角ﾎﾟｯﾌﾟ体', 'Noto Sans JP', sans-serif"],
