@@ -45,6 +45,30 @@
       <input class="checkboxes" id="checkbox_controls" type="checkbox" checked><label class="checkboxes_label" for="checkbox_controls">詳細設定を表示</label>
       <input class="checkboxes" id="checkbox_log" type="checkbox" checked><label class="checkboxes_label" for="checkbox_log">認識結果のログを表示</label>
       <div class="controls_wrapper control_wrapper_row">
+        <div class="control_button_wrapper">
+          <input type="button" value="カメラ 表示/非表示" onclick="toggleClass('result_video','hidden')">
+          <input type="button" value="カメラ 左右反転" onclick="toggleClass('result_video','mirror')">
+          <input type="button" value="文字 表示/非表示" onclick="toggleClass('text_overlay_wrapper','hidden')">
+          <input type="button" value="文字 左右反転" onclick="toggleClass('text_overlay_wrapper','mirror')">
+          <input type="button" value="全画面化ボタン 表示/非表示" onclick="toggleClass('FullScreenBtn','hidden')">
+          <input type="button" value="設定の初期化" onclick="deleteConfig()">
+        </div>
+  
+        <div class="control_selector_wrapper">
+          カメラ：
+          <select id="select_camera" onchange="setupCamera()"></select>
+        </div>
+
+        <div class="control_selector_wrapper">
+          音声認識<a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay#他の言語を認識したい" target="_blank">[?]</a>:
+          <select id="select_language" class="selector" onchange="updateCountry()"></select>
+          <select id="select_dialect" class="selector" onchange="updateLanguage()"></select>
+          <span id="checkbox_hiragana_wrapper" class="selector">
+          <label for="checkbox_hiragana">ひらがな</label><a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay#ひらがなで表示したい" target="_blank">[?]</a>: <input type="checkbox" id="checkbox_hiragana" name="checkbox_hiragana" value="hiragana" oninput="initKuromoji(this)">
+        </span> 翻訳
+          <a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay#自動で翻訳したい" target="_blank">[?]</a>:
+          <div id="google_translate_element" class="select_translation selector"></div>
+        </div>
         <div class="col-12 control_wrapper_col">
           <div class="control_header">文字の調整</div>
           <div class="control_wrapper" style="padding-top: 0.8rem;">
@@ -186,31 +210,6 @@
               <input id="selector_video_bg" type="color" class="control_input" value="#00ff00" oninput="document.getElementById('video_bg').style.backgroundColor=this.value">
             </div>
           </div>
-        </div>
-
-        <div class="control_button_wrapper">
-          <input type="button" value="カメラ 表示/非表示" onclick="toggleClass('result_video','hidden')">
-          <input type="button" value="カメラ 左右反転" onclick="toggleClass('result_video','mirror')">
-          <input type="button" value="文字 表示/非表示" onclick="toggleClass('text_overlay_wrapper','hidden')">
-          <input type="button" value="文字 左右反転" onclick="toggleClass('text_overlay_wrapper','mirror')">
-          <input type="button" value="全画面化ボタン 表示/非表示" onclick="toggleClass('FullScreenBtn','hidden')">
-          <input type="button" value="設定の初期化" onclick="deleteConfig()">
-        </div>
-  
-        <div class="control_selector_wrapper">
-          カメラ：
-          <select id="select_camera" onchange="setupCamera()"></select>
-        </div>
-
-        <div class="control_selector_wrapper">
-          音声認識<a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay#他の言語を認識したい" target="_blank">[?]</a>:
-          <select id="select_language" class="selector" onchange="updateCountry()"></select>
-          <select id="select_dialect" class="selector" onchange="updateLanguage()"></select>
-          <span id="checkbox_hiragana_wrapper" class="selector">
-          <label for="checkbox_hiragana">ひらがな</label><a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay#ひらがなで表示したい" target="_blank">[?]</a>: <input type="checkbox" id="checkbox_hiragana" name="checkbox_hiragana" value="hiragana" oninput="initKuromoji(this)">
-        </span> 翻訳
-          <a href="https://github.com/1heisuzuki/speech-to-text-webcam-overlay#自動で翻訳したい" target="_blank">[?]</a>:
-          <div id="google_translate_element" class="select_translation selector"></div>
         </div>
       </div>
       <div id="log" class="log_wrapper">
