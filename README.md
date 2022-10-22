@@ -5,7 +5,7 @@ Web Speech API の音声認識を利用して文字起こしした結果をWeb�
 
 # デモページ
 https://1heisuzuki.github.io/speech-to-text-webcam-overlay/  
-*PC版のGoogle Chromeでアクセスしてください。
+*PC版のGoogle ChromeやMicrosoft Edgeのような音声認識をサポートするブラウザでアクセスしてください。Safariは2022年10月現在、挙動が不安定なので非推奨です。
 
 **目次**
 - [動作環境](#動作環境)
@@ -22,10 +22,14 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 かなりざっくりとした動作環境しか行っていません。  
 同様の環境で動かない場合はブラウザのアップデートや別ブラウザでの利用等をお試しください。
 
-- PC版 Google Chrome / Chromium / Vivaldi
+- PC版 Google Chrome
   - Windows, macOS, Linux (Ubuntu Mate 20.04) などで確認済み
+- PC版 Microsoft Edge
+  - Windows, macOSで動作することを確認（Linuxは2022年10月現在クラッシュする模様）
+- macOS版 Safari
+  - 一応動作するものの、同じ文言が二重で出たり認識が止まるなど、挙動が不安定
 - Android版 Google Chrome
-  - 筆者が端末を所持していないため未検証だが，動いたとの情報あり  
+  - 筆者が端末を所持していないため未検証だが，動いたとの情報あり（2022年10月現在、音声認識が適切に動作しない模様）
 
 # 何ができるか
 - 音声からリアルタイムで文字起こしを行い，Webカメラの映像に重ねてブラウザ上で表示する
