@@ -11,33 +11,86 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// ブラウザ判定
-// 参考: https://qiita.com/sakuraya/items/33f93e19438d0694a91d
-var userAgent = window.navigator.userAgent.toLowerCase();
-var isChrome = 0;
+const TYPE_BROWSER = 'browser_';
+const TYPE_INAPP = 'inapp_';
+const TYPE_SPECIAL = 'special_';
+const TYPE_UNKNOWN = 'unknown_';
 
-if (userAgent.indexOf('msie') != -1 || userAgent.indexOf('trident') != -1) {
-  // IE
-} else if (userAgent.indexOf('edge') != -1) {
-  // Edge
-} else if (userAgent.indexOf('chrome') != -1) {
-  // Chrome
-  isChrome = 1;
-} else if (userAgent.indexOf('safari') != -1) {
-  // Safari
-} else if (userAgent.indexOf('firefox') != -1) {
-  // Firefox
-} else if (userAgent.indexOf('opera') != -1) {
-  // Opera
-} else {
-  // その他
+/**
+ * ブラウザを可能な範囲で判別する。
+ * （参考）
+ * https://zenn.dev/kecy/articles/f51851e42c4243
+ * https://qiita.com/nightyknite/items/b2590a69f2e0135756dc
+ * @return {string} 判別結果（基本的な形式は「type_name」。typeは単体ブラウザ（browser）かアプリ内ブラウザ（inapp）。nameはブラウザ名。
+ */
+function detectBrowser() {
+  const ua = window.navigator.userAgent.toLowerCase().trim();
+
+  // 特殊なプラットフォーム
+  if (ua.includes('silk')) return TYPE_SPECIAL + 'silk';
+  if (ua.includes('aftb')) return TYPE_SPECIAL + 'firetv';
+  if (ua.includes('nintendo')) return TYPE_SPECIAL + 'nintendo';
+  if (ua.includes('playstation')) return TYPE_SPECIAL + 'playstation';
+  if (ua.includes('xbox')) return TYPE_SPECIAL + 'xbox';
+
+  // 各種の「独自ブラウザ」
+  if (ua.includes('samsung')) return TYPE_BROWSER + 'Samsung';
+  if (ua.includes('ucbrowser')) return TYPE_BROWSER + 'UC Browser';
+  if (ua.includes('qqbrowser')) return TYPE_BROWSER + 'QQ Browser';
+  if (ua.includes('yabrowser')) return TYPE_BROWSER + 'Yandex';
+  if (ua.includes('whale')) return TYPE_BROWSER + 'Whale';
+  if (ua.includes('puffin')) return TYPE_BROWSER + 'Puffin';
+  if (ua.includes('opr')) return TYPE_BROWSER + 'Opera';
+  if (ua.includes('coc_coc')) return TYPE_BROWSER + 'Cốc Cốc';
+
+  // アプリ内ブラウザ
+  if (ua.includes('yahoo') || ua.includes('yjapp')) return TYPE_INAPP + 'Yahoo';
+  if (ua.includes('fban') || ua.includes('fbios')) return TYPE_INAPP + 'Facebook';
+  if (ua.includes('instagram')) return TYPE_INAPP + 'Instagram';
+  if (ua.includes('line')) return TYPE_INAPP + 'LINE';
+  if (ua.includes('cfnetwork')) return TYPE_INAPP + 'iOS app';
+  if (ua.includes('dalvik')) return TYPE_INAPP + 'Android app';
+  if (ua.includes('wv)')) return TYPE_INAPP + 'Android WebView';
+
+  // 特殊なブラウザ
+  if (ua.includes('crios')) return TYPE_BROWSER + 'Chrome(iOS)';
+  if (ua.includes('fxios')) return TYPE_BROWSER + 'Firefox(iOS)';
+
+  // 一般のブラウザ
+  if (ua.includes('trident') || ua.includes('msie')) return TYPE_BROWSER + 'IE';
+  if (ua.includes('edge')) return TYPE_BROWSER + 'EdgeHTML';
+  if (ua.includes('edg')) return TYPE_BROWSER + 'Edge';
+  if (ua.includes('firefox')) return TYPE_BROWSER + 'Firefox';
+
+  // 一般のブラウザのうち、UserAgentが他で流用されすぎたもの（最後に配置する）
+  if (ua.includes('chrome')) return TYPE_BROWSER + 'Chrome';
+  if (ua.includes('safari')) return TYPE_BROWSER + 'Safari';
+
+  // いずれにも当てはまらない場合
+  return TYPE_UNKNOWN + "unknown";
 }
 
-if (!isChrome) {
-  alert('Google Chromeでアクセスしてください')
-  document.getElementById('status').innerHTML = "Google Chromeでアクセスしてください";
+/**
+ * ブラウザが音声認識をサポートすると自己申告しているか判別する。
+ * 具体的には SpeechRecognition または webkitSpeechRecognition オブジェクトの存在を判定している。
+ * @returns {boolean} ブラウザが音声認識をサポートすると自己申告していればtrue
+ */
+function is_speech_recognition_supported() {
+  return window.SpeechRecognition || window.webkitSpeechRecognition != null;
+}
+
+const browser = detectBrowser();
+const is_inapp = (browser.indexOf(TYPE_INAPP) == 0);
+const isnot_supported = (is_speech_recognition_supported() != true);
+console.log(`Detected Browser : ${browser} / Speech recognition NOT-support : ${isnot_supported}`);
+if (is_inapp || isnot_supported) {
+  const errorMessage = 'Google ChromeかMicrosoft Edgeのような音声認識対応ブラウザでアクセスしてください';
+  alert(errorMessage);
+  document.getElementById('status').innerHTML = errorMessage;
   document.getElementById('status').className = "error";
-  exit;
+  // exit;
+} else if (browser.indexOf('Safari') > 0) {
+  alert('Safariは音声認識で問題が起こりやすいので、Google Chromeをおすすめします。');
 }
 
 // Webカメラ
@@ -46,7 +99,7 @@ if (!isChrome) {
 if (typeof navigator.mediaDevices.getUserMedia !== 'function') {
   const err = new Error('getUserMedia()が使用できません');
   alert(`${err.name} ${err.message}`);
-  throw err;
+  // throw err;
 }
 
 const $video = document.getElementById('result_video'); // 映像表示エリア
