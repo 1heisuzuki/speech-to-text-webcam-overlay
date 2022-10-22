@@ -260,7 +260,8 @@ function vr_function() {
     for (var i = event.resultIndex; i < results.length; i++) {
       if (results[i].isFinal) {
         last_finished = results[i][0].transcript;
-        if (lang == 'ja-JP') {
+        const is_end_of_sentence = last_finished.endsWith('。') || last_finished.endsWith('？') || last_finished.endsWith('！');
+        if (lang == 'ja-JP' && is_end_of_sentence != true) {
           last_finished += '。';
         }
 
