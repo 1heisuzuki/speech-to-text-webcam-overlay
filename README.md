@@ -47,6 +47,8 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 - 音声文字変換には Web Speech API を利用しており，音声データおよびその文字起こしデータが実際どのように処理されるかは，ユーザーが利用するブラウザによって異なります。  
 参考: Web Speech APIを使う - Web API | MDN https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
 - 音声データおよびその文字起こしデータの各ブラウザの扱いについては，当該ブラウザやブラウザ開発者のプライバシーポリシーなどを参照してください。 
+  - 参考: Google Chrome Privacy Whitepaper https://www.google.com/chrome/privacy/whitepaper.html
+  - 参考: Microsoft Edge プライバシー ホワイトペーパー https://learn.microsoft.com/ja-jp/microsoft-edge/privacy-whitepaper/#speech-recognition
 - 開発者は，本プログラム [speech-to-text-webcam-overlay](https://github.com/1heisuzuki/speech-to-text-webcam-overlay) および それを Github Pages でホスティングした [Speech to Text Webcam Overlay](https://1heisuzuki.github.io/speech-to-text-webcam-overlay/) を使用したことにより生じた損害等の一切の責任を負いかねますのでご了承ください。
 
 ## 使用環境関係
