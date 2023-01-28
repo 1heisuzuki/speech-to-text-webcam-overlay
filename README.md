@@ -5,7 +5,7 @@ Web Speech API の音声認識を利用して文字起こしした結果をWeb�
 
 # デモページ
 https://1heisuzuki.github.io/speech-to-text-webcam-overlay/  
-*PC版のGoogle Chromeでアクセスしてください。
+*PC版のGoogle ChromeやMicrosoft Edgeのような音声認識をサポートするブラウザでアクセスしてください。Safariは2022年10月現在、挙動が不安定なので非推奨です。
 
 **目次**
 - [動作環境](#動作環境)
@@ -22,10 +22,17 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 かなりざっくりとした動作環境しか行っていません。  
 同様の環境で動かない場合はブラウザのアップデートや別ブラウザでの利用等をお試しください。
 
-- PC版 Google Chrome / Chromium / Vivaldi
+- PC版 Google Chrome
   - Windows, macOS, Linux (Ubuntu Mate 20.04) などで確認済み
+  - 日本語の場合，イントネーションに関わらず「。」が付与されます。これは，Web SpeechAPI の機能ではなく，本ページの機能です。
+- PC版 Microsoft Edge
+  - Windows, macOSで動作することを確認（Linuxは2022年10月現在クラッシュする模様）
+  - 日本語の場合，音声認識が識別し「、」「。」「？」などの付与が行われます。これは，本ページの機能ではなく，Web Speech API の機能です。
+  - 筆者の検証環境では，Google Chrome よりも Edge は認識頻度や速度が遅く見えました。環境や用途によって，Chrome と Edge どちらが適切かが異なると思われるので，使われる方の環境で双方お試しいただくことをおすすめします。
+- macOS版 Safari
+  - 一応動作はするものの、同じ文言が二重で出たり認識が止まるなど、挙動が不安定
 - Android版 Google Chrome
-  - 筆者が端末を所持していないため未検証だが，動いたとの情報あり  
+  - 2022年10月現在、音声認識が適切に動作しない模様（Android 13; Pixel 6 Pro にて検証。[詳細](https://github.com/1heisuzuki/speech-to-text-webcam-overlay/pull/59#issuecomment-1407392064)
 
 # 何ができるか
 - 音声からリアルタイムで文字起こしを行い，Webカメラの映像に重ねてブラウザ上で表示する
@@ -43,6 +50,8 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 - 音声文字変換には Web Speech API を利用しており，音声データおよびその文字起こしデータが実際どのように処理されるかは，ユーザーが利用するブラウザによって異なります。  
 参考: Web Speech APIを使う - Web API | MDN https://developer.mozilla.org/ja/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
 - 音声データおよびその文字起こしデータの各ブラウザの扱いについては，当該ブラウザやブラウザ開発者のプライバシーポリシーなどを参照してください。 
+  - 参考: Google Chrome Privacy Whitepaper https://www.google.com/chrome/privacy/whitepaper.html
+  - 参考: Microsoft Edge プライバシー ホワイトペーパー https://learn.microsoft.com/ja-jp/microsoft-edge/privacy-whitepaper/#speech-recognition
 - 開発者は，本プログラム [speech-to-text-webcam-overlay](https://github.com/1heisuzuki/speech-to-text-webcam-overlay) および それを Github Pages でホスティングした [Speech to Text Webcam Overlay](https://1heisuzuki.github.io/speech-to-text-webcam-overlay/) を使用したことにより生じた損害等の一切の責任を負いかねますのでご了承ください。
 
 ## 使用環境関係
