@@ -84,13 +84,13 @@ const is_inapp = (browser.indexOf(TYPE_INAPP) == 0);
 const isnot_supported = (is_speech_recognition_supported() != true);
 console.log(`Detected Browser : ${browser} / Speech recognition NOT-support : ${isnot_supported}`);
 if (is_inapp || isnot_supported) {
-  const errorMessage = 'Google ChromeかMicrosoft Edgeのような音声認識対応ブラウザでアクセスしてください';
+  const errorMessage = 'Google Chrome や Microsoft Edge のような音声認識対応ブラウザでアクセスしてください。';
   alert(errorMessage);
   document.getElementById('status').innerHTML = errorMessage;
   document.getElementById('status').className = "error";
   // exit;
 } else if (browser.indexOf('Safari') > 0) {
-  alert('Safariは音声認識で問題が起こりやすいので、Google Chromeをおすすめします。');
+  alert('Safari は音声認識で問題が起こりやすいので、Google Chrome の使用をおすすめします。');
 }
 
 // Webカメラ
