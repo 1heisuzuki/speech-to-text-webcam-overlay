@@ -24,12 +24,15 @@ https://1heisuzuki.github.io/speech-to-text-webcam-overlay/
 
 - PC版 Google Chrome
   - Windows, macOS, Linux (Ubuntu Mate 20.04) などで確認済み
+  - 日本語の場合，イントネーションに関わらず「。」が付与されます。これは，Web SpeechAPI の機能ではなく，本ページの機能です。
 - PC版 Microsoft Edge
   - Windows, macOSで動作することを確認（Linuxは2022年10月現在クラッシュする模様）
+  - 日本語の場合，音声認識が識別し「、」「。」「？」などの付与が行われます。これは，本ページの機能ではなく，Web Speech API の機能です。
+  - 筆者の検証環境では，Google Chrome よりも Edge は認識頻度や速度が遅く見えました。環境や用途によって，Chrome と Edge どちらが適切かが異なると思われるので，使われる方の環境で双方お試しいただくことをおすすめします。
 - macOS版 Safari
-  - 一応動作するものの、同じ文言が二重で出たり認識が止まるなど、挙動が不安定
+  - 一応動作はするものの、同じ文言が二重で出たり認識が止まるなど、挙動が不安定
 - Android版 Google Chrome
-  - 筆者が端末を所持していないため未検証だが，動いたとの情報あり（2022年10月現在、音声認識が適切に動作しない模様）
+  - 2022年10月現在、音声認識が適切に動作しない模様（Android 13; Pixel 6 Pro にて検証。[詳細](https://github.com/1heisuzuki/speech-to-text-webcam-overlay/pull/59#issuecomment-1407392064)
 
 # 何ができるか
 - 音声からリアルタイムで文字起こしを行い，Webカメラの映像に重ねてブラウザ上で表示する
